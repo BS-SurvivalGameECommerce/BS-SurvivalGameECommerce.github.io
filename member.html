@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!-- Add this to <head> -->
+    <!-- Load required Bootstrap and BootstrapVue CSS -->
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
+    <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+    <!-- Load polyfills to support older browsers -->
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous">
+    </script>
+    <!-- Load Vue followed by BootstrapVue -->
+    <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <!-- Load the following for BootstrapVueIcons support -->
+    <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+      <div class="col-10 mx-auto">
+        <div id="memberlist">
+            <!-- <div>
+                <b-table striped hover :items="item"></b-table>
+            </div> -->
+            <b-container fluid>
+              <!-- User Interface controls -->
+              <b-row>
+                <b-col lg="6" class="my-1">
+                  <b-form-group
+                    label="Sort"
+                    label-cols-sm="3"
+                    label-align-sm="right"
+                    label-size="sm"
+                    label-for="sortBySelect"
+                    class="mb-0"
+                  >
+                    <b-input-group size="sm">
+                      <b-form-select v-model="sortBy" id="sortBySelect" :options="sortOptions" class="w-75">
+                        <template v-slot:first>
+                          <option value="">-- none --</option>
+                        </template>
+                      </b-form-select>
+                      <b-form-select v-model="sortDesc" size="sm" :disabled="!sortBy" class="w-25">
+                        <option :value="false">Asc</option>
+                        <option :value="true">Desc</option>
+                      </b-form-select>
+                    </b-input-group>
+                  </b-form-group>
+                </b-col>
+          
+                <b-col lg="6" class="my-1">
+                  <b-form-group
+                    label="Initial sort"
+                    label-cols-sm="3"
+                    label-align-sm="right"
+                    label-size="sm"
+                    label-for="initialSortSelect"
+                    class="mb-0"
+                  >
+                    <b-form-select
+                      v-model="sortDirection"
+                      id="initialSortSelect"
+                      size="sm"
+                      :options="['asc', 'desc', 'last']"
+                    ></b-form-select>
+                  </b-form-group>
+                </b-col>
+          
+                <b-col lg="6" class="my-1">
+                  <b-form-group
+                    label="Filter"
+                    label-cols-sm="3"
+                    label-align-sm="right"
+                    label-size="sm"
+                    label-for="filterInput"
+                    class="mb-0"
+                  >
+                    <b-input-group size="sm">
+                      <b-form-input
+                        v-model="filter"
+                        type="search"
+                        id="filterInput"
+                        placeholder="Type to Search"
+                      ></b-form-input>
+                      <b-input-group-append>
+                        <b-button :disabled="!filter" @click="filter = ''">Clear</b-button>
+                      </b-input-group-append>
+                    </b-input-group>
+                  </b-form-group>
+                </b-col>
+          
+                <b-col lg="6" class="my-1">
+                  <b-form-group
+                    label="Filter On"
+                    label-cols-sm="3"
+                    label-align-sm="right"
+                    label-size="sm"
+                    description="Leave all unchecked to filter on all data"
+                    class="mb-0">
+                    <b-form-checkbox-group v-model="filterOn" class="mt-1">
+                      <b-form-checkbox value="name">Name</b-form-checkbox>
+                      <!-- <b-form-checkbox value="age">Age</b-form-checkbox> -->
+                    
+                    </b-form-checkbox-group>
+                  </b-form-group>
+                </b-col>
+          
+                <b-col sm="5" md="6" class="my-1">
+                  <b-form-group
+                    label="Per page"
+                    label-cols-sm="6"
+                    label-cols-md="4"
+                    label-cols-lg="3"
+                    label-align-sm="right"
+                    label-size="sm"
+                    label-for="perPageSelect"
+                    class="mb-0"
+                  >
+                    <b-form-select
+                      v-model="perPage"
+                      id="perPageSelect"
+                      size="sm"
+                      :options="pageOptions"
+                    ></b-form-select>
+                  </b-form-group>
+                </b-col>
+          
+                <b-col sm="7" md="6" class="my-1">
+                  <b-pagination
+                    v-model="currentPage"
+                    :total-rows="totalRows"
+                    :per-page="perPage"
+                    align="fill"
+                    size="sm"
+                    class="my-0"
+                  ></b-pagination>
+                </b-col>
+              </b-row>
+          
+              <!-- Main table element -->
+              <b-table
+              class="col-10 mx-auto"
+                show-empty
+                small
+                stacked="md"
+                :items="item"
+                :fields="fields"
+                :current-page="currentPage"
+                :per-page="perPage"
+                :filter="filter"
+                :filterIncludedFields="filterOn"
+                :sort-by.sync="sortBy"
+                :sort-desc.sync="sortDesc"
+                :sort-direction="sortDirection"
+                @filtered="onFiltered"
+              >
+               
+          
+                <template v-slot:cell(actions)="row">
+                  <b-button size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1 btn-danger">
+                    Info modal
+                  </b-button>
+                  <b-button size="sm" @click="row.toggleDetails" class="btn-danger">
+                    {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+                  </b-button>
+                </template>
+          
+                <template v-slot:row-details="row">
+                  <b-card>
+                    <ul>
+                      <li v-for="(value, key) in row.item" :key="key">{{ key }}: {{ value }}</li>
+                    </ul>
+                  </b-card>
+                </template>
+              </b-table>
+          
+              <!-- Info modal -->
+              <b-modal :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
+                <pre>{{ infoModal.content }}</pre>
+              </b-modal>
+            </b-container>
+        </div>
+      </div>
+        
+    
+
+   
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/member.js"></script>
+  </body>
+</html>
