@@ -3,9 +3,10 @@ export default {
   mounted: function () {
     console.log("mounted");
 
-    let recaptchaScript = document.createElement("script");
-    recaptchaScript.setAttribute("src", "../assets/javaScript/main.js");
-    document.head.appendChild(recaptchaScript);
+    // let recaptchaScript = document.createElement("script");
+    // recaptchaScript.setAttribute("src", "../assets/javaScript/main.js");
+    // document.head.appendChild(recaptchaScript);
+    this.contentWayPoint();
   },
 };
 </script>

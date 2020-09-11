@@ -4,6 +4,7 @@ import Vue from 'vue'
 import 'bootstrap-vue'
 import App from './APP/index.vue'
 import router from './router'
+import plugin from './plugin/plugin.js'
 
 // import '@/assets/javaScript/jquery.min.js'
 // import '@/assets/javaScript/jquery-migrate-3.0.1.min.js'
@@ -19,6 +20,8 @@ import router from './router'
 
 
 Vue.config.productionTip = false
+
+Vue.use(plugin)
 
 new Vue({
     router,

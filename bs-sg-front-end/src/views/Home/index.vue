@@ -1,4 +1,3 @@
-<script src="@/assets/javaScript/main.js"></script>
 <script>
 import axios from "axios";
 
@@ -25,15 +24,15 @@ export default {
     }).then((res) => {
       let response = res.data;
       console.log(response);
-      console.log("this :", this.Products);
+
       if (response.isSuccess) {
         self.Products = response.data;
-        contentWayPoint();
+        this.contentWayPoint();
       }
     });
   },
   updated: function () {
-    contentWayPoint();
+    this.contentWayPoint();
   },
 };
 </script>
