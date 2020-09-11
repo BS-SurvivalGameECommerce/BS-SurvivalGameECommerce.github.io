@@ -6,9 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
+    <meta name="referrer" content="no-referrer" />
+    <!--页面头部添加-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -22,17 +23,17 @@
 
     <style>
         /*@RenderSection("topCss", required: false)*/
+        
         #ftco-navbar {
             margin-bottom: 0px;
         }
-
+        
         .limit-length {
             width: 150px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
-    </style>
     </style>
     <link href="./Assets/css/LoginPartialView/LoginPartialView.css" rel="stylesheet" />
 </head>
@@ -85,53 +86,45 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light py-3" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href=@Url.Action("Index" ,"Home")><img src="./Assets/images/Logo.png" alt=""
-                    style="max-height:50px;"></a>
+            <a class="navbar-brand" href=@Url.Action( "Index" , "Home")><img src="./Assets/images/Logo.png" alt="" style="max-height:50px;"></a>
             <div class="order-lg-last btn-group">
-                <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="flaticon-shopping-bag"></span>
                     <div class="d-flex justify-content-center align-items-center"><small>0</small></div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" style="max-height:440px;overflow:auto;">
-                    <a class="dropdown-item text-center btn-link d-block w-100" href="@Url.Action("
-                        ShoppingCart","Product")">
+                    <a class="dropdown-item text-center btn-link d-block w-100" href="@Url.Action(" ShoppingCart ","Product ")">
                         View All
                         <span class="ion-ios-arrow-round-forward"></span>
                     </a>
                 </div>
             </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="@Url.Action(" Index","home")" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="@Url.Action(" About","home")" class="nav-link">About</a></li>
+                    <li class="nav-item active"><a href="@Url.Action(" Index ","home ")" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="@Url.Action(" About ","home ")" class="nav-link">About</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">Products</a>
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
-                            <a class="dropdown-item" href="@Url.Action(" ProductMenu","Product" ,new { ID="CG001" })"
-                                )">Gun</a>
-                            <a class="dropdown-item" href="@Url.Action(" ProductMenu","Product" ,new { id="CG002" })"
+                            <a class="dropdown-item" href="@Url.Action(" ProductMenu ","Product " ,new { ID="CG001 " })" ) ">Gun</a>
+                            <a class="dropdown-item " href="@Url.Action( " ProductMenu", "Product" ,new { id="CG002" }) "
                                 )">Clothes</a>
-                            <a class="dropdown-item" href="@Url.Action(" ProductMenu","Product" ,new { id="CG003"
+                            <a class="dropdown-item" href="@Url.Action(" ProductMenu ","Product " ,new { id="CG003 "
                                 })">Accessories</a>
-                            <a class="dropdown-item" href="@Url.Action(" ProductMenu","Product" ,new { id="CG004"
+                            <a class="dropdown-item" href="@Url.Action(" ProductMenu ","Product " ,new { id="CG004 "
                                 })">Magazine</a>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="@Url.Action(" Contact","home")" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="@Url.Action(" Contact ","home ")" class="nav-link">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- @RenderBody() -->
-    <div class="hero-wrap" style="background-image: url('../../Assets/images/bg1.jpg');"
-        data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url('../../Assets/images/bg1.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -139,10 +132,9 @@
                     <div class="text w-100 text-center">
                         <h1 class="mb-4">May <span>the odds </span>be ever <span>in your favor</span>.</h1>
                         <p>
-                            <a href="@Url.Action(" ProductMenu","Product")" class="btn btn-primary py-2 px-4">Shop
+                            <a href="@Url.Action(" ProductMenu ","Product ")" class="btn btn-primary py-2 px-4">Shop
                                 Now</a>
-                            <a href="@Url.Action(" About","home")"
-                                class="btn btn-white btn-outline-white py-2 px-4">Read more</a>
+                            <a href="@Url.Action(" About ","home ")" class="btn btn-white btn-outline-white py-2 px-4">Read more</a>
                         </p>
                     </div>
                 </div>
@@ -199,8 +191,7 @@
     <section class="ftco-section ftco-no-pb">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 img img-3 d-flex justify-content-center align-items-center"
-                    style="background-image: url(../../Assets/images/home.jpg);">
+                <div class="col-md-6 img img-3 d-flex justify-content-center align-items-center" style="background-image: url(../../Assets/images/home.jpg);">
                 </div>
                 <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
                     <div class="heading-section">
@@ -210,10 +201,8 @@
                             Survival game was originally from Midwest of United States in early 50's.
                         </p>
                         <p>
-                            It’s a tactical game of module military with similarity to play paintballs. Easily shoot the
-                            opponents to win this game. Let’s unlock the missions and have fun in the modern first
-                            personal shooting game. It’s particular to the tactics, retains and fast reaction. It’s
-                            affectionate to everyone who loves challenging and military games.
+                            It’s a tactical game of module military with similarity to play paintballs. Easily shoot the opponents to win this game. Let’s unlock the missions and have fun in the modern first personal shooting game. It’s particular to the tactics, retains and fast
+                            reaction. It’s affectionate to everyone who loves challenging and military games.
                         </p>
                         <p class="year">
                             <strong class="number" data-number="70">0</strong>
@@ -231,9 +220,8 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3">
                     <div class="sort w-100 text-center ftco-animate">
-                        <a href="@Url.Action(" ProductMenu","Product" ,new { ID="CG001" })">
-                            <div class="img"
-                                style="background-image: url(../../Assets/images/G_1.jpg); width: 215px; height: 215px;">
+                        <a href="@Url.Action(" ProductMenu ","Product " ,new { ID="CG001 " })">
+                            <div class="img" style="background-image: url(../../Assets/images/G_1.jpg); width: 215px; height: 215px;">
                             </div>
                             <h3>Gun</h3>
                         </a>
@@ -242,9 +230,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="sort w-100 text-center ftco-animate">
-                        <a href="@Url.Action(" ProductMenu","Product" ,new { ID="CG002" })">
-                            <div class="img"
-                                style="background-image: url(../../Assets/images/C_1.jpg); width: 215px; height: 215px;">
+                        <a href="@Url.Action(" ProductMenu ","Product " ,new { ID="CG002 " })">
+                            <div class="img" style="background-image: url(../../Assets/images/C_1.jpg); width: 215px; height: 215px;">
                             </div>
                             <h3>Clothes</h3>
                         </a>
@@ -253,9 +240,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="sort w-100 text-center ftco-animate">
-                        <a href="@Url.Action(" ProductMenu","Product" ,new { ID="CG003" })">
-                            <div class="img"
-                                style="background-image: url(../../Assets/images/A_1.jpg); width: 215px; height: 215px;">
+                        <a href="@Url.Action(" ProductMenu ","Product " ,new { ID="CG003 " })">
+                            <div class="img" style="background-image: url(../../Assets/images/A_1.jpg); width: 215px; height: 215px;">
                             </div>
                             <h3>Accessories</h3>
                         </a>
@@ -264,9 +250,8 @@
                 </div>
                 <div class="col-md-6 col-lg-3">
                     <div class="sort w-100 text-center ftco-animate">
-                        <a href="@Url.Action(" ProductMenu","Product" ,new { ID="CG004" })">
-                            <div class="img"
-                                style="background-image: url(../../Assets/images/M_1.jpg); width: 215px; height: 215px;">
+                        <a href="@Url.Action(" ProductMenu ","Product " ,new { ID="CG004 " })">
+                            <div class="img" style="background-image: url(../../Assets/images/M_1.jpg); width: 215px; height: 215px;">
                             </div>
                             <h3>Magazine</h3>
                         </a>
@@ -287,8 +272,7 @@
             <div class="row product_items" id="newestProductArea">
                 <div class="col-md-3 d-flex" v-for="item in Products">
                     <div class="product ftco-animate">
-                        <div class="img productimg d-flex align-items-center justify-content-center"
-                            :style="{'background-image' : `url(${item.img})`}">
+                        <div class="img productimg d-flex align-items-center justify-content-center" :style="{'background-image' : `url(${item.img})`}">
                             <div class="desc">
                                 <p class="meta-prod d-flex">
                                     <a href="#" class="d-flex align-items-center justify-content-center">
@@ -303,7 +287,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <div class="producttext text-center">
                             <h4 class="limit-length">
                                 {{item.name}}
@@ -317,7 +301,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-4">
-                    <a href="@Url.Action(" ProductMenu","Product")" class="btn btn-primary d-block">
+                    <a href="@Url.Action(" ProductMenu ","Product ")" class="btn btn-primary d-block">
                         View All Products <span class="fa fa-long-arrow-right"></span>
                     </a>
                 </div>
@@ -360,8 +344,9 @@
             <div class="row mb-5">
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2 logo"><a href="@Url.Action(" About","Home")"><img
-                                    src="./Assets/images/LogoSmall.png" alt=""></a></h2>
+                        <h2 class="ftco-heading-2 logo">
+                            <a href="@Url.Action(" About ","Home ")"><img src="./Assets/images/LogoSmall.png" alt=""></a>
+                        </h2>
                         <p>Far far away, behind the word mountains, far from the countries.</p>
                         <ul class="ftco-footer-social list-unstyled mt-2">
                             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
@@ -381,7 +366,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li><a href="@Url.Action(" MemberRegister","Member")"><span
+                            <li><a href="@Url.Action(" MemberRegister ","Member ")"><span
                                         class="fa fa-chevron-right mr-2"></span>Register</a></li>
                             <li><a href="##" class="Log_In"><span class="fa fa-chevron-right mr-2"></span>Log In</a>
                             </li>
@@ -392,7 +377,7 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">Information</h2>
                         <ul class="list-unstyled">
-                            <li><a href="@Url.Action(" About","home")"><span
+                            <li><a href="@Url.Action(" About ","home ")"><span
                                         class="fa fa-chevron-right mr-2"></span>About us</a></li>
                         </ul>
                     </div>
@@ -401,13 +386,13 @@
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Shopping</h2>
                         <ul class="list-unstyled">
-                            <li><a href="@Url.Action(" ProductMenu","Product" ,new { id="CG001" })"><span
+                            <li><a href="@Url.Action(" ProductMenu ","Product " ,new { id="CG001 " })"><span
                                         class="fa fa-chevron-right mr-2"></span>Gun</a></li>
-                            <li><a href="@Url.Action(" ProductMenu","Product" ,new { id="CG002" })"><span
+                            <li><a href="@Url.Action(" ProductMenu ","Product " ,new { id="CG002 " })"><span
                                         class="fa fa-chevron-right mr-2"></span>Clothes</a></li>
-                            <li><a href="@Url.Action(" ProductMenu","Product" ,new { id="CG003" })"><span
+                            <li><a href="@Url.Action(" ProductMenu ","Product " ,new { id="CG003 " })"><span
                                         class="fa fa-chevron-right mr-2"></span>Accessories</a></li>
-                            <li><a href="@Url.Action(" ProductMenu","Product" ,new { id="CG004" })"><span
+                            <li><a href="@Url.Action(" ProductMenu ","Product " ,new { id="CG004 " })"><span
                                         class="fa fa-chevron-right mr-2"></span>Magazine</a></li>
                         </ul>
                     </div>
@@ -431,8 +416,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <span class="icon fa fa-paper-plane pr-4"></span><span
-                                            class="text">SurvivalGame@gmail.com</span>
+                                        <span class="icon fa fa-paper-plane pr-4"></span><span class="text">SurvivalGame@gmail.com</span>
                                     </a>
                                 </li>
                             </ul>
@@ -450,9 +434,7 @@
                             Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> All rights reserved | This template is made with <i
-                                class="fa fa-heart color-danger" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                            </script> All rights reserved | This template is made with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
                         </p>
                     </div>
                 </div>
@@ -502,8 +484,7 @@
 
 
     <!-- Load polyfills to support older browsers -->
-    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver"
-        crossorigin="anonymous"></script>
+    <script src="//polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
 
     <!-- Load Vue followed by BootstrapVue -->
     <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
@@ -523,20 +504,18 @@
     <script>
         //@RenderSection("bottomJs", required: false)
         let vm = null;
-        window.onload = function () {
+        window.onload = function() {
             vm = new Vue({
                 el: '#newestProductArea',
-                data:{
-                    Products:[
-                        {
-                            pid: '',
-                            name: '',
-                            img: '',
-                            price: ''
-                        }
-                    ]
+                data: {
+                    Products: [{
+                        pid: '',
+                        name: '',
+                        img: '',
+                        price: ''
+                    }]
                 },
-                updated: function(){
+                updated: function() {
                     contentWayPoint();
                 }
             });
@@ -544,15 +523,14 @@
                 type: "Get",
                 url: "https://sgwebapi-core.azurewebsites.net/Product/NewestSimpleProduct/8",
                 dataType: "JSON",
-                success: function (response) {
+                success: function(response) {
                     console.log(response);
-                    if(response.isSuccess){
+                    if (response.isSuccess) {
                         vm.$data.Products = response.data;
                     }
                 }
             });
         };
-
     </script>
 
     <!-- <script>
