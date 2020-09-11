@@ -54,7 +54,7 @@ ModalLoginButton.onclick = function (e) {
         contentType: 'application/json',
         data: JSON.stringify(ModalMemberItem),
         success: function (data) {
-            //server ¤w¸gset cookie¤F
+            //server ï¿½wï¿½gset cookieï¿½F
             if (data.status) {
                 member.$data.isLogin = true;
                 member.$data.memMail = data.Name;

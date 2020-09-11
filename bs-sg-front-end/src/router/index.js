@@ -1,6 +1,8 @@
+import 'jquery'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/Home/index.vue'
+
 
 Vue.use(VueRouter)
 
