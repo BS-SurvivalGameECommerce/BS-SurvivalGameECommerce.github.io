@@ -1,10 +1,14 @@
 import Vue from 'vue'
 // import App from './App.vue'
 // import 'jquery'
-import 'bootstrap-vue'
+// import 'bootstrap-vue'
 import App from './APP/index.vue'
 import router from './router'
 import plugin from './plugin/plugin.js'
+import BootstrapVue from 'bootstrap-vue'
+// import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+Vue.use(BootstrapVue)
 
 // import '@/assets/javaScript/jquery.min.js'
 // import '@/assets/javaScript/jquery-migrate-3.0.1.min.js'

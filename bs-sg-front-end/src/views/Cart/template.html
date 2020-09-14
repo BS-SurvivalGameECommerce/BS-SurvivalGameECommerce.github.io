@@ -1,0 +1,75 @@
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div id="cartArea">
+                <b-table :items="items" :fields="fields" thead-class="thead-primary">
+                    <template v-slot:cell(product)="data">
+                        <div class="productArea">
+                            <div class="imgArea">
+                                <div class="img">
+                                    <img :src="data.item.img" alt="">
+                                </div>
+                            </div>
+                            <div class="textArea">
+                                <span>
+                                    {{data.item.name}}
+                                </span>
+                            </div>
+                        </div>
+                    </template>
+                    <template v-slot:cell(quantity)="data">
+                        <b-form-spinbutton v-model="data.item.quantity" min="1" max="100" inline>
+                        </b-form-spinbutton>
+                    </template>
+                    <template v-slot:cell(total)="data">
+                        <div>
+                            <span>
+                                {{productTotal(data.index)}}
+                            </span>
+                        </div>
+                    </template>
+                    <template v-slot:cell(delete)="data">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                        </button>
+                    </template>
+                </b-table>
+                <div class="cart-all-total">
+                    <span class="title">Total:</span>
+                    <span class="total-price">$</span>
+                    <span class="total-price">
+                        {{total}}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row justify-content-end">
+            <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+                <div class="cart-total mb-3">
+                    <h3>Cart Totals</h3>
+                    <p class="d-flex">
+                        <span>Subtotal</span>
+                        <span>$20.60</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Delivery</span>
+                        <span>$0.00</span>
+                    </p>
+                    <p class="d-flex">
+                        <span>Discount</span>
+                        <span>$3.00</span>
+                    </p>
+                    <hr>
+                    <p class="d-flex total-price">
+                        <span>Total</span>
+                        <span>$17.60</span>
+                    </p>
+                </div>
+                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to
+                        Checkout</a></p>
+            </div>
+        </div>
+    </div>
+</section>
