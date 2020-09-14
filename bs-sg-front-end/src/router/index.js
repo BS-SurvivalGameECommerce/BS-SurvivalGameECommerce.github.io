@@ -5,6 +5,9 @@ import Home from '../views/Home/index.vue'
 import Cart from '../views/Cart/index.vue'
 import ProductMenu from '../views/ProductMenu/index.vue'
 import Gun from '../views/Gun/index.vue'
+import Magazine from '../views/Magazines/index.vue'
+import Accessories from '../views/Accessories/index.vue'
+import Clothes from '../views/Clothes/index.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +25,21 @@ const routes = [{
         path: '/Gun',
         name: 'Gun',
         component: Gun
+    },
+    {
+        path: '/Magazine',
+        name: 'Magazine',
+        component: Magazine
+    },
+    {
+        path: '/Accessories',
+        name: 'Accessories',
+        component: Accessories
+    },
+    {
+        path: '/Clothes',
+        name: 'Clothes',
+        component: Clothes
     },
     {
         path: '/about',

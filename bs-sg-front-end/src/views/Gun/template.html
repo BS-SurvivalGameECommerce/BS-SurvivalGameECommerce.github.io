@@ -5,9 +5,24 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate mb-5 text-center">
-                <p class="breadcrumbs mb-0"><span class="mr-2"><a href="index.html">Home <i
-                                class="fa fa-chevron-right"></i></a></span> <span>Products <i
-                            class="fa fa-chevron-right"></i></span></p>
+                <p class="breadcrumbs mb-0">
+                    <span class="mr-2">
+                        <a href="http://localhost:8080/#/">
+                            Home
+                             <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </span> 
+                    <span>
+                        <a href="http://localhost:8080/#/Menu">
+                            Products
+                        </a>
+                        <i class="fa fa-chevron-right"></i>
+                    </span>
+                    <span>
+                        Gun
+                        <i class="fa fa-chevron-right"></i>
+                    </span>
+                </p>
                 <h2 class="mb-0 bread">Products</h2>
             </div>
         </div>
@@ -51,7 +66,7 @@
             <div class="col-md-3">
                 <div class="sidebar-box ftco-animate">
                     <div class="categories">
-                        <h3>Product Types</h3>
+                        <h3>class Types</h3>
                         <ul class="p-0">
                             <li v-for="item in ClassName"><button class="filter" :id="item"
                                 v-on:click="pselect(item)">{{item}}</button> <span

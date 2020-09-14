@@ -11,7 +11,7 @@ var AttrList = [];
 var num;
 var endnum;
 export default {
-  name: "Gun",
+  name: "Accessories",
   data() {
     return {
       product: product,
@@ -24,7 +24,7 @@ export default {
   },
   mounted: function () {
     axios({
-      url: "https://localhost:44306/Product/Catagory/Gun",
+      url: "https://localhost:44306/Product/Catagory/Accessories",
       method: "Get",
     }).then((res) => {
       let response = res.data;
