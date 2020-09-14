@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+// let a : string;
+// a = '123';
 export default {
     data(){
         return {
