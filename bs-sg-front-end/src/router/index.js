@@ -3,6 +3,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home/index.vue'
 import Cart from '../views/Cart/index.vue'
+import ProductMenu from '../views/ProductMenu/index.vue'
+import Gun from '../views/Gun/index.vue'
 
 Vue.use(VueRouter)
 
@@ -10,6 +12,16 @@ const routes = [{
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/Menu',
+        name: 'Menu',
+        component: ProductMenu
+    },
+    {
+        path: '/Gun',
+        name: 'Gun',
+        component: Gun
     },
     {
         path: '/about',
