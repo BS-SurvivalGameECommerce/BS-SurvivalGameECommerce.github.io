@@ -2,50 +2,60 @@
 import axios from "axios";
 
 var product = [];
-var AttrListName = [];
+// var AttrListName = [];
 var AttrListValues = [];
-var ClassName = [];
+// var ClassName = [];
 var AttrList = [];
 // var valueul;
-
+var routername = "";
 var num;
 var endnum;
 export default {
-  name: "Magazines",
+  name: "Catagory",
   data() {
     return {
+      routername: "",
       product: product,
-      ClassName: ClassName,
-      AttrListName: AttrListName,
+      ClassName: [],
+      AttrListName:[],
       AttrListValues: AttrListValues,
       AttrList: [],
       valueul: "value-ul",
     };
   },
-  mounted: function () {
+  created() {
+    console.log(this.$route.params.name);
+    this._data.routername = this.$route.params.name;
+    routername = this.$route.params.name;
     axios({
-      url: "https://localhost:44306/Product/Catagory/Magazine",
+      url: "https://localhost:44306/Product/Menu",
       method: "Get",
     }).then((res) => {
+      // ClassName=[]
+      // AttrListName=[]
       let response = res.data;
       console.log(response);
       response.data.forEach((item) => {
         product.push(item);
       });
-      response.data.forEach((item) => {
-        if (ClassName.indexOf(item.className) == -1) {
-          ClassName.push(item.className);
+      product = response.data.filter((item) => item.catagoryName == routername);
+      this._data.product=product
+      console.log(product);
+      this._data.product.forEach((item) => {
+        if (this._data.ClassName.indexOf(item.className) == -1) {
+          this._data.ClassName.push(item.className);
         }
       });
-      response.data.forEach((item) => {
+      this._data.product.forEach((item) => {
         item.attrlist.forEach((aitem) => {
-          if (AttrListName.indexOf(aitem.name) == -1) {
-            AttrListName.push(aitem.name);
+          if (this._data.AttrListName.indexOf(aitem.name) == -1) {
+            this._data.AttrListName.push(aitem.name);
           }
         });
       });
     });
   },
+  mounted: function () {},
   methods: {
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
