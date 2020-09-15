@@ -1,0 +1,100 @@
+<div>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/PMBG2.jpg');"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2">
+                            <a href="http://localhost:8080/#/">
+                                Home
+                                 <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </span> 
+                        <span>
+                            <a href="http://localhost:8080/#/Menu">
+                                Products
+                            </a>
+                            <i class="fa fa-chevron-right"></i>
+                        </span>
+                        <span>
+                            Clothes
+                            <i class="fa fa-chevron-right"></i>
+                        </span>
+                    </p>
+                    <h2 class="mb-0 bread">Products</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section" id="ProductList">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="row mb-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 d-flex" v-for="item in product">
+                            <div class="product ">
+                                <div class="img d-flex align-items-center justify-content-center"
+                                    :style="{backgroundImage: 'url(' + item.img + ')'}">
+                                </div>
+                                <div class="text text-center">
+                                    <span class="category">{{item.className}}</span>
+                                    <h2 id="product_name">{{item.name}}</h2>
+                                    <p class="mb-0"> <span class="price">${{item.price}}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <ul>
+                                    <li><a href="#">&lt;</a></li>
+                                    <li class="active"><span>1</span></li>
+
+                                    <li><a href="#">&gt;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="sidebar-box ftco-animate">
+                        <div class="categories">
+                            <h3>Product Types</h3>
+                            <ul class="p-0">
+                                <li v-for="item in ClassName"><button class="filter" :id="item"
+                                        v-on:click="pselect(item)">{{item}}</button> <span
+                                        class="fa fa-chevron-right"></span></li>
+                                <li><button class="filter" v-on:click="reset()">Reset</button> <span
+                                        class="fa fa-chevron-right"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-box ftco-animate">
+                        <h3>Attribute Types</h3>
+                        <ul class="p-0">
+                            <li v-for="item in AttrListName" class="attr-li"><button class="filter"
+                                    v-on:click="display(item)">{{item}}</button> <span
+                                    class="fa fa-chevron-right"></span>
+                                <ul style="display: none;" :id="item" v-bind:class="valueul">
+                                    <li v-for="vitem in AttrList" class="attr-li-value"
+                                        v-on:click="aselect(vitem.value)">
+                                        {{vitem.value}}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="attr-re"><button class="filter" v-on:click="reset()">Reset</button> <span
+                                    class="fa fa-chevron-right"></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
