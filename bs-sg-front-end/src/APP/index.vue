@@ -1,5 +1,6 @@
 <script>
 export default {
+  name: 'APP',
   mounted: function () {
     console.log("mounted");
 
@@ -7,7 +8,7 @@ export default {
     // recaptchaScript.setAttribute("src", "../assets/javaScript/main.js");
     // document.head.appendChild(recaptchaScript);
     this.contentWayPoint();
-  },
+  }
 };
 </script>
 
