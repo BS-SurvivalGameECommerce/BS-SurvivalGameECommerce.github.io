@@ -2,7 +2,7 @@
 import axios from "axios";
 import qs from "qs";
 
-var domain = "https://localhost:44306/";
+var domain = "https://localhost:5001/";
 export default {
   name: "cart",
   data() {

@@ -2,7 +2,8 @@
 import axios from "axios";
 // import {addToCart} from "../../assets/js/cart.js";
 
-
+var domain = "https://localhost:44306/";
+var api=domain+"Product/Menu"
 var product = [];
 // var AttrListName = [];
 var AttrListValues = [];
@@ -30,7 +31,7 @@ export default {
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
     axios({
-      url: "https://localhost:44306/Product/Menu",
+      url: api,
       method: "Get",
     }).then((res) => {
       // ClassName=[]
@@ -58,13 +59,10 @@ export default {
     });
   },
   mounted: function () {
-    // addToCart("PD001", 1);
-    // addToCart("PD002", 2);
-    // addToCart("PD003", 3);
   },
   methods: {
     Addcart:function(x){
-      alert(x)
+      alert("Add to Cart")
       this.addToCart(x,1);
     },
     pselect: function (x) {
