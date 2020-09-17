@@ -1,5 +1,6 @@
  <script>
 import axios from "axios";
+import {addToCart} from "../../assets/js/cart.js";
 
 var product = [];
 // var AttrListName = [];
@@ -17,7 +18,7 @@ export default {
       routername: "",
       product: product,
       ClassName: [],
-      AttrListName:[],
+      AttrListName: [],
       AttrListValues: AttrListValues,
       AttrList: [],
       valueul: "value-ul",
@@ -39,7 +40,7 @@ export default {
         product.push(item);
       });
       product = response.data.filter((item) => item.catagoryName == routername);
-      this._data.product=product
+      this._data.product = product;
       console.log(product);
       this._data.product.forEach((item) => {
         if (this._data.ClassName.indexOf(item.className) == -1) {
@@ -55,8 +56,16 @@ export default {
       });
     });
   },
-  mounted: function () {},
+  mounted: function () {
+    // addToCart("PD001", 1);
+    // addToCart("PD002", 2);
+    // addToCart("PD003", 3);
+  },
   methods: {
+    Addcart:function(x){
+      alert(x)
+      addToCart(x, 1);
+    },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
       console.log(cul);
