@@ -1,6 +1,7 @@
  <script>
 import axios from "axios";
-import {addToCart} from "../../assets/js/cart.js";
+// import {addToCart} from "../../assets/js/cart.js";
+
 
 var product = [];
 // var AttrListName = [];
@@ -64,7 +65,7 @@ export default {
   methods: {
     Addcart:function(x){
       alert(x)
-      addToCart(x, 1);
+      this.addToCart(x,1);
     },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
