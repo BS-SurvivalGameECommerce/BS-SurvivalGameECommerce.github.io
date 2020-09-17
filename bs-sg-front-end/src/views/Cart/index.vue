@@ -1,12 +1,13 @@
 <script  lang="ts" >
-import { cart, addToCart ,removeFromCart } from "../../assets/js/cart.js";
 import axios from "axios";
 import qs from "qs";
 
+var domain = "https://localhost:5001/";
 export default {
   name: "cart",
   data() {
     return {
+      memberID: "MB014",
       isLoading: true,
       fields: [
         "product",
@@ -16,52 +17,60 @@ export default {
         {
           key: "delete",
           label: "",
-          tdClass: "last",
-        },
+          tdClass: "last"
+        }
       ],
       items: [
         {
           img: "/assets/images/prod-1.jpg",
           name: "Jim Beam Kentucky Straight",
           price: 44.99,
-          quantity: 2,
+          quantity: 2
         },
         {
           img: "/assets/images/prod-1.jpg",
           name: "Jim Beam Kentucky Straight",
           price: 44.99,
-          quantity: 2,
-        },
+          quantity: 2
+        }
       ],
+      PaymentMethod: {
+        valid: true,
+        id: "PM001"
+      },
+      DeliveryAddress: {
+        valid: true,
+        address: "新竹市香山區五福路二段707號"
+      }
     };
   },
-  mounted: function () {
+  mounted: function() {
     console.log("mounted");
-    addToCart("PD001", 1);
-    addToCart("PD002", 2);
-    addToCart("PD003", 3);
-    let IDList = cart.map((x) => x.pID);
+    this.addToCart("PD001", 1);
+    this.addToCart("PD002", 2);
+    this.addToCart("PD003", 3);
+    
+    console.log(this.store);
+
+    let IDList = this.cart.store.map(x => x.pID);
 
     axios
-      .get("https://localhost:5001/Product/BatchSimpleProduct", {
+      .get(`${domain}Product/BatchSimpleProduct`, {
         params: {
-          IDList: IDList,
+          IDList: IDList
         },
-        paramsSerializer: function (params) {
+        paramsSerializer: function(params) {
           return qs.stringify(params, { arrayFormat: "repeat" });
-        },
+        }
       })
-      .then((res) => {
+      .then(res => {
         let response = res.data;
         console.log(response);
-        console.log(cart);
-        console.log(this.items);
         this.isLoading = false;
 
         if (response.isSuccess) {
-          //   self.Products = response.data;
           response.data.forEach(
-            (x) => (x.quantity = cart.find((y) => y.pID == x.pid).quantity)
+            x => (x.quantity = this.cart.store.find(y => y.pID == x.pid).quantity)
           );
           this.items = response.data;
           this.contentWayPoint();
@@ -69,7 +78,7 @@ export default {
       });
   },
   computed: {
-    total: function () {
+    total: function() {
       return this.items.reduce((accumulator, c) => {
         return parseFloat(
           (
@@ -78,19 +87,40 @@ export default {
         );
       }, 0);
     },
+    confirmOrderValid: function() {
+      return this.PaymentMethod.valid && this.DeliveryAddress.valid;
+    }
   },
   methods: {
-    productTotal: function (index) {
+    productTotal: function(index) {
       let target = this.items[index];
       return parseFloat((target.price * target.quantity).toPrecision(12));
     },
-    removeFromCart:function(pid){
-        removeFromCart(pid);
+    removeFromCartFunc: function(pid) {
+      this.removeFromCart(pid);
 
-        let tIndex = this.items.findIndex(x => x.id == pid);
-        this.items.splice(tIndex ,1);
+      let tIndex = this.items.findIndex(x => x.id == pid);
+      this.items.splice(tIndex, 1);
+    },
+    confirmOrder: function() {
+      let data = {
+        MemberId: this.memberID,
+        PaymentMethodId: this.PaymentMethod.id,
+        ShipAddress: this.DeliveryAddress.address,
+        ODList: this.cart.store.map(x => {
+          return {
+            ProductId: x.pID,
+            Quantity: x.quantity
+          };
+        })
+      };
+      axios
+        .post(`${domain}Order/CreateOrder`, data)
+        .then(res => {
+          console.log(res.data);
+        });
     }
-  },
+  }
 };
 </script>
 <template src = "./template.html"></template>

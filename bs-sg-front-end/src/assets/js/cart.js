@@ -1,17 +1,17 @@
-var cart = JSON.parse(localStorage.getItem('cart')) || [];
+var store = JSON.parse(localStorage.getItem('cart')) || [];
 
 function addToCart(pID, quantity) {
-    if (!cart) {
+    if (!store) {
         let t = localStorage.getItem('cart');
         if (t) {
-            cart = JSON.parse(t);
+            store = JSON.parse(t);
         } else {
-            cart = [];
+            store = [];
         }
     }
-    let target = cart.find(x => x.pID == pID);
+    let target = store.find(x => x.pID == pID);
     if (!target) {
-        cart.push({
+        store.push({
             pID: pID,
             quantity: quantity
         });
@@ -24,26 +24,33 @@ function addToCart(pID, quantity) {
         }
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(store));
 }
 
 function removeFromCart(pID) {
-    if (!cart) {
+    if (!store) {
         let t = localStorage.getItem('cart');
         if (t) {
-            cart = JSON.parse(t);
+            store = JSON.parse(t);
         } else {
-            cart = [];
+            store = [];
         }
     }
-    let targetIndex = cart.findIndex(x => x.pID == pID);
+    let targetIndex = store.findIndex(x => x.pID == pID);
     if (targetIndex != -1) {
-        cart.splice(targetIndex, 1);
+        store.splice(targetIndex, 1);
     } else {
         console.log("no such product");
         return;
     }
-    localStorage.setItem('cart', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(store));
 }
 
-export { cart, addToCart, removeFromCart };
+// export default { store, addToCart, removeFromCart };
+export default {
+    store,
+    methods: {
+        addToCart,
+        removeFromCart
+    }
+};

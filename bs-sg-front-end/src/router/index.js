@@ -6,8 +6,8 @@ import Cart from '../views/Cart/index.vue'
 import ProductMenu from '../views/ProductMenu/index.vue'
 import Gun from '../views/Gun/index.vue'
 import Magazine from '../views/Magazines/index.vue'
-import Accessories from '../views/Accessories/index.vue'
-import Clothes from '../views/Clothes/index.vue'
+import Accessories  from '../views/Accessories/index.vue'
+import Clothes  from '../views/Clothes/index.vue'
 
 Vue.use(VueRouter)
 

@@ -8,19 +8,19 @@ import plugin from './plugin/plugin.js'
 import BootstrapVue from 'bootstrap-vue'
 // import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-Vue.use(BootstrapVue)
 
-// import '@/assets/javaScript/jquery.min.js'
-// import '@/assets/javaScript/jquery-migrate-3.0.1.min.js'
-// import '@/assets/javaScript/popper.min.js'
-// import '@/assets/javaScript/jquery.easing.1.3.js'
-// import '@/assets/javaScript/jquery.waypoints.min.js'
-// import '@/assets/javaScript/jquery.stellar.min.js'
-// import '@/assets/javaScript/owl.carousel.min.js'
-// import '@/assets/javaScript/jquery.magnific-popup.min.js'
-// import '@/assets/javaScript/jquery.animateNumber.min.js'
-// import '@/assets/javaScript/scrollax.min.js'
-// import '@/assets/javaScript/main.js'
+
+import cartObj from '@/assets/js/cart.js'
+Vue.prototype.cart = cartObj;
+// Vue.prototype.addToCart = function(pID : string, quantity :number){
+//     cartObj.addToCart(pID, quantity);
+// };
+// Vue.prototype.removeFromCart = function(pID : string){
+//     cartObj.removeFromCart(pID);
+// };
+Vue.mixin(cartObj);
+
+Vue.use(BootstrapVue)
 
 
 Vue.config.productionTip = false
