@@ -1,6 +1,7 @@
 var store = JSON.parse(localStorage.getItem('cart')) || [];
 
 function addToCart(pID, quantity) {
+    pID = pID.trim();
     if (!store) {
         let t = localStorage.getItem('cart');
         if (t) {
@@ -28,6 +29,7 @@ function addToCart(pID, quantity) {
 }
 
 function removeFromCart(pID) {
+    pID = pID.trim();
     if (!store) {
         let t = localStorage.getItem('cart');
         if (t) {
