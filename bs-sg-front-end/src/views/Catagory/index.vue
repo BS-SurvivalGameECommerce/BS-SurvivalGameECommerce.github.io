@@ -1,6 +1,9 @@
  <script>
 import axios from "axios";
+// import {addToCart} from "../../assets/js/cart.js";
 
+var domain = "https://localhost:44306/";
+var api=domain+"Product/Menu"
 var product = [];
 // var AttrListName = [];
 var AttrListValues = [];
@@ -17,7 +20,7 @@ export default {
       routername: "",
       product: product,
       ClassName: [],
-      AttrListName:[],
+      AttrListName: [],
       AttrListValues: AttrListValues,
       AttrList: [],
       valueul: "value-ul",
@@ -28,7 +31,7 @@ export default {
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
     axios({
-      url: "https://localhost:44306/Product/Menu",
+      url: api,
       method: "Get",
     }).then((res) => {
       // ClassName=[]
@@ -39,7 +42,7 @@ export default {
         product.push(item);
       });
       product = response.data.filter((item) => item.catagoryName == routername);
-      this._data.product=product
+      this._data.product = product;
       console.log(product);
       this._data.product.forEach((item) => {
         if (this._data.ClassName.indexOf(item.className) == -1) {
@@ -55,8 +58,13 @@ export default {
       });
     });
   },
-  mounted: function () {},
+  mounted: function () {
+  },
   methods: {
+    Addcart:function(x){
+      alert("Add to Cart")
+      this.addToCart(x,1);
+    },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
       console.log(cul);

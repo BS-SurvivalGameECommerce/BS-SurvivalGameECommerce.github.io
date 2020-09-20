@@ -1,6 +1,8 @@
 <script>
 import axios from "axios";
 
+var domain = "https://localhost:44306/";
+var api=domain+"Product/Menu"
 var product = [];
 var CatagoryName = [];
 
@@ -14,7 +16,7 @@ export default {
   },
   mounted: function () {
     axios({
-      url: "https://localhost:44306/Product/Menu",
+      url: api,
       method: "Get",
     }).then((res) => {
       let response = res.data;
@@ -30,6 +32,10 @@ export default {
     });
   },
   methods: {
+    Addcart:function(x){
+      alert("Add to Cart")
+      this.addToCart(x,1);
+    },
     pselect: function (x) {
       this._data.product = product.filter(function (item) {
         return item.catagoryName == x;
