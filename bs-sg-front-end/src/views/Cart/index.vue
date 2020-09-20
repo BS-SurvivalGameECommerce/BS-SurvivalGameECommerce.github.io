@@ -46,35 +46,6 @@ export default {
   },
   mounted: function() {
     this.isLoading = false;
-    // console.log("mounted");
-    // this.cart.addToCart("PD001", 1);
-    // this.cart.addToCart("PD002", 2);
-    // this.cart.addToCart("PD003", 3);
-
-    // let IDList = this.cart.store.map(x => x.pID);
-
-    // axios
-    //   .get(`${domain}Product/BatchSimpleProduct`, {
-    //     params: {
-    //       IDList: IDList
-    //     },
-    //     paramsSerializer: function(params) {
-    //       return qs.stringify(params, { arrayFormat: "repeat" });
-    //     }
-    //   })
-    //   .then(res => {
-    //     let response = res.data;
-    //     console.log(response);
-    //     this.isLoading = false;
-
-    //     if (response.isSuccess) {
-    //       response.data.forEach(
-    //         x => (x.quantity = this.cart.store.find(y => y.pID == x.pid).quantity)
-    //       );
-    //       this.cartItems = response.data;
-    //       this.contentWayPoint();
-    //     }
-    //   });
   },
   computed: {
     cartItems(){

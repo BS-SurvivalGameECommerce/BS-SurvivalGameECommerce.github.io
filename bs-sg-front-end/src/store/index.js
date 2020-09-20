@@ -65,37 +65,29 @@ export default new Vuex.Store({
         },
         initCart: function(context) {
             console.log('initCart');
-            context.commit('addToCart', { pid: 'PD001', quantity: 1 });
-            context.commit('addToCart', { pid: 'PD002', quantity: 2 });
-            context.commit('addToCart', { pid: 'PD003', quantity: 3 });
 
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if (cart != []) {
-                let IDList = cart.map(x => x.pid);
-                axios
-                    .get(`${context.state.domain}Product/BatchSimpleProduct`, {
-                        params: {
-                            IDList: IDList
-                        },
-                        paramsSerializer: function(params) {
-                            return qs.stringify(params, { arrayFormat: "repeat" });
-                        }
-                    })
-                    .then(res => {
-                        let response = res.data;
+            let IDList = cart.map(x => x.pid);
 
-                        if (response.isSuccess) {
-                            response.data.forEach(
-                                x => (x.quantity = cart.find(y => y.pid == x.pid).quantity)
-                            );
-                            cart = response.data;
-                            context.commit('initCart', cart);
-                        }
-                    });
+            return axios.get(`${context.state.domain}Product/BatchSimpleProduct`, {
+                    params: {
+                        IDList: IDList
+                    },
+                    paramsSerializer: function(params) {
+                        return qs.stringify(params, { arrayFormat: "repeat" });
+                    }
+                })
+                .then(res => {
+                    let response = res.data;
 
-            } else {
-                context.commit('initCart', cart);
-            }
+                    if (response.isSuccess) {
+                        response.data.forEach(
+                            x => (x.quantity = cart.find(y => y.pid == x.pid).quantity)
+                        );
+                        cart = response.data;
+                        context.commit('initCart', cart);
+                    }
+                });
         }
     },
     modules: {}
