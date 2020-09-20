@@ -2,7 +2,7 @@
 import axios from "axios";
 // import qs from "qs";
 
-var domain = "https://localhost:5001/";
+// var domain = "https://localhost:5001/";
 export default {
   name: "cart",
   data() {
@@ -81,15 +81,15 @@ export default {
         MemberId: this.memberID,
         PaymentMethodId: this.PaymentMethod.id,
         ShipAddress: this.DeliveryAddress.address,
-        ODList: this.cart.store.map(x => {
+        ODList: this.cartItems.map(x => {
           return {
-            ProductId: x.pID,
+            ProductId: x.pid,
             Quantity: x.quantity
           };
         })
       };
       axios
-        .post(`${domain}Order/CreateOrder`, data)
+        .post(`${this.$store.state.domain}Order/CreateOrder`, data)
         .then(res => {
           console.log(res.data);
         });
