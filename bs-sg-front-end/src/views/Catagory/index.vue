@@ -3,7 +3,7 @@ import axios from "axios";
 // import {addToCart} from "../../assets/js/cart.js";
 
 var domain = "https://localhost:5001/";
-var api=domain+"Product/Menu"
+var api = domain + "Product/Menu";
 var product = [];
 // var AttrListName = [];
 var AttrListValues = [];
@@ -25,6 +25,43 @@ export default {
       AttrList: [],
       valueul: "value-ul",
     };
+  },
+  watch: {
+    $route(to) {
+      product = [];
+      this._data.AttrListName = [];
+      this._data.ClassName = [];
+      console.log(to.params.name);
+      this._data.routername = to.params.name;
+      routername = to.params.name;
+      axios({
+        url: api,
+        method: "Get",
+      }).then((res) => {
+        let response = res.data;
+        console.log(response);
+        response.data.forEach((item) => {
+          product.push(item);
+        });
+        product = response.data.filter(
+          (item) => item.catagoryName == routername
+        );
+        this._data.product = product;
+        console.log(product);
+        this._data.product.forEach((item) => {
+          if (this._data.ClassName.indexOf(item.className) == -1) {
+            this._data.ClassName.push(item.className);
+          }
+        });
+        this._data.product.forEach((item) => {
+          item.attrlist.forEach((aitem) => {
+            if (this._data.AttrListName.indexOf(aitem.name) == -1) {
+              this._data.AttrListName.push(aitem.name);
+            }
+          });
+        });
+      });
+    },
   },
   created() {
     console.log(this.$route.params.name);
@@ -58,13 +95,11 @@ export default {
       });
     });
   },
-  mounted: function () {
-  },
+  mounted: function () {},
   methods: {
-    Addcart:function(x){
-      alert("Add to Cart")
-      // this.addToCart(x,1);
-      this.$store.dispatch('addToCart', { pid:x, quantity: 1 });
+    Addcart: function (x) {
+      alert("Add to Cart");
+      this.$store.dispatch("addToCart", { pid: x, quantity: 1 });
     },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -113,7 +148,11 @@ export default {
     },
     aselect: function (x) {
       product.forEach((item) => {
-        num = item.attrlist.map(function (aitem) {return aitem.value;}).indexOf(x);
+        num = item.attrlist
+          .map(function (aitem) {
+            return aitem.value;
+          })
+          .indexOf(x);
         if (num != -1) {
           endnum = num;
         }
