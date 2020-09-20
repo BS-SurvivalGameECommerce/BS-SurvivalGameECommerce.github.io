@@ -10,15 +10,16 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 
-import cartObj from '@/assets/js/cart.js'
-Vue.prototype.cart = cartObj;
+// import cartObj from '@/assets/js/cart.js'
+import store from './store'
+// Vue.prototype.cart = cartObj;
 // Vue.prototype.addToCart = function(pID : string, quantity :number){
 //     cartObj.addToCart(pID, quantity);
 // };
 // Vue.prototype.removeFromCart = function(pID : string){
 //     cartObj.removeFromCart(pID);
 // };
-Vue.mixin(cartObj);
+// Vue.mixin(cartObj);
 
 Vue.use(BootstrapVue)
 
@@ -29,5 +30,6 @@ Vue.use(plugin)
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')

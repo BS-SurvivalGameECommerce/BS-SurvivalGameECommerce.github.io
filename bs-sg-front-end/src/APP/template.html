@@ -43,9 +43,12 @@
             <div class="order-lg-last btn-group">
                 <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="flaticon-shopping-bag"></span>
-                    <div class="d-flex justify-content-center align-items-center"><small>0</small></div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <small>{{simpleCartItemsAmount}}</small>
+                    </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" style="max-height:440px;overflow:auto;">
+                    <simpleCart />
                     <a class="dropdown-item text-center btn-link d-block w-100" href="#">
                         View All
                         <span class="ion-ios-arrow-round-forward"></span>
@@ -68,13 +71,15 @@
                             <a class="dropdown-item " href="#">Magazine</a>
                         </div>
                     </li>
-                    <li class="nav-item "><a href="# " class="nav-link ">Contact</a></li>
+                    <li class="nav-item ">
+                        <a href="# " class="nav-link ">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <router-view/>
+    <router-view />
 
     <footer class="ftco-footer ">
         <div class="container ">
@@ -105,8 +110,7 @@
                                     </span>
                                 </a>
                             </li>
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>Register</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>Register</a></li>
                             <li><a href="## " class="Log_In "><span class="fa fa-chevron-right mr-2 "></span>Log In</a>
                             </li>
                         </ul>
@@ -116,8 +120,7 @@
                     <div class="ftco-footer-widget mb-4 ml-md-4 ">
                         <h2 class="ftco-heading-2 ">Information</h2>
                         <ul class="list-unstyled ">
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>About us</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>About us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -125,14 +128,10 @@
                     <div class="ftco-footer-widget mb-4 ">
                         <h2 class="ftco-heading-2 ">Shopping</h2>
                         <ul class="list-unstyled ">
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>Gun</a></li>
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>Clothes</a></li>
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>Accessories</a></li>
-                            <li><a href="# "><span
-                                        class="fa fa-chevron-right mr-2 "></span>Magazine</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>Gun</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>Clothes</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>Accessories</a></li>
+                            <li><a href="# "><span class="fa fa-chevron-right mr-2 "></span>Magazine</a></li>
                         </ul>
                     </div>
                 </div>

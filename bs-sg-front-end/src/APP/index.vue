@@ -1,6 +1,12 @@
 <script>
+
+import simpleCart from '../components/SimpleCart/index.vue'
+
 export default {
   name: 'APP',
+  components:{
+     simpleCart
+  },
   mounted: function () {
     console.log("mounted");
 
@@ -8,6 +14,12 @@ export default {
     // recaptchaScript.setAttribute("src", "../assets/javaScript/main.js");
     // document.head.appendChild(recaptchaScript);
     this.contentWayPoint();
+    this.$store.dispatch('initCart');
+  },
+  computed:{
+    simpleCartItemsAmount(){
+        return this.$store.state.cartItems.length;
+    }
   }
 };
 </script>

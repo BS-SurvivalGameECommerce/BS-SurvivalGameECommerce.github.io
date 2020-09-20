@@ -1,6 +1,6 @@
 <script  lang="ts" >
 import axios from "axios";
-import qs from "qs";
+// import qs from "qs";
 
 var domain = "https://localhost:5001/";
 export default {
@@ -45,41 +45,43 @@ export default {
     };
   },
   mounted: function() {
-    console.log("mounted");
-    this.addToCart("PD001", 1);
-    this.addToCart("PD002", 2);
-    this.addToCart("PD003", 3);
-    
-    console.log(this.store);
+    this.isLoading = false;
+    // console.log("mounted");
+    // this.cart.addToCart("PD001", 1);
+    // this.cart.addToCart("PD002", 2);
+    // this.cart.addToCart("PD003", 3);
 
-    let IDList = this.cart.store.map(x => x.pID);
+    // let IDList = this.cart.store.map(x => x.pID);
 
-    axios
-      .get(`${domain}Product/BatchSimpleProduct`, {
-        params: {
-          IDList: IDList
-        },
-        paramsSerializer: function(params) {
-          return qs.stringify(params, { arrayFormat: "repeat" });
-        }
-      })
-      .then(res => {
-        let response = res.data;
-        console.log(response);
-        this.isLoading = false;
+    // axios
+    //   .get(`${domain}Product/BatchSimpleProduct`, {
+    //     params: {
+    //       IDList: IDList
+    //     },
+    //     paramsSerializer: function(params) {
+    //       return qs.stringify(params, { arrayFormat: "repeat" });
+    //     }
+    //   })
+    //   .then(res => {
+    //     let response = res.data;
+    //     console.log(response);
+    //     this.isLoading = false;
 
-        if (response.isSuccess) {
-          response.data.forEach(
-            x => (x.quantity = this.cart.store.find(y => y.pID == x.pid).quantity)
-          );
-          this.items = response.data;
-          this.contentWayPoint();
-        }
-      });
+    //     if (response.isSuccess) {
+    //       response.data.forEach(
+    //         x => (x.quantity = this.cart.store.find(y => y.pID == x.pid).quantity)
+    //       );
+    //       this.cartItems = response.data;
+    //       this.contentWayPoint();
+    //     }
+    //   });
   },
   computed: {
+    cartItems(){
+        return this.$store.state.cartItems;
+    },
     total: function() {
-      return this.items.reduce((accumulator, c) => {
+      return this.cartItems.reduce((accumulator, c) => {
         return parseFloat(
           (
             parseFloat(accumulator) + parseFloat(c.price * c.quantity)
@@ -93,14 +95,15 @@ export default {
   },
   methods: {
     productTotal: function(index) {
-      let target = this.items[index];
+      let target = this.cartItems[index];
       return parseFloat((target.price * target.quantity).toPrecision(12));
     },
     removeFromCartFunc: function(pid) {
-      this.removeFromCart(pid);
+      // this.removeFromCart(pid);
 
-      let tIndex = this.items.findIndex(x => x.id == pid);
-      this.items.splice(tIndex, 1);
+      // let tIndex = this.cartItems.findIndex(x => x.pid == pid);
+      // this.cartItems.splice(tIndex, 1);
+      this.$store.commit('removeFromCart' ,pid);
     },
     confirmOrder: function() {
       let data = {
