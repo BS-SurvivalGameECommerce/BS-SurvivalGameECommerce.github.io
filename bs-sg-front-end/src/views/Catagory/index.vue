@@ -2,7 +2,7 @@
 import axios from "axios";
 // import {addToCart} from "../../assets/js/cart.js";
 
-var domain = "https://localhost:44306/";
+var domain = "https://localhost:5001/";
 var api=domain+"Product/Menu"
 var product = [];
 // var AttrListName = [];
@@ -63,7 +63,8 @@ export default {
   methods: {
     Addcart:function(x){
       alert("Add to Cart")
-      this.addToCart(x,1);
+      // this.addToCart(x,1);
+      this.$store.dispatch('addToCart', { pid:x, quantity: 1 });
     },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -112,11 +113,7 @@ export default {
     },
     aselect: function (x) {
       product.forEach((item) => {
-        num = item.attrlist
-          .map(function (aitem) {
-            return aitem.value;
-          })
-          .indexOf(x);
+        num = item.attrlist.map(function (aitem) {return aitem.value;}).indexOf(x);
         if (num != -1) {
           endnum = num;
         }

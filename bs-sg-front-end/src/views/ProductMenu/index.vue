@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 
-var domain = "https://localhost:44306/";
+var domain = "https://localhost:5001/";
 var api=domain+"Product/Menu"
 var product = [];
 var CatagoryName = [];
