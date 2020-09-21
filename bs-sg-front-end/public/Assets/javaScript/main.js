@@ -31,7 +31,7 @@ var contentWayPoint = function() {
         }
 
     }, { offset: '95%' });
-};
+}
 var carousel = function() {
     $('.carousel-testimony').owlCarousel({
         center: true,
@@ -56,7 +56,7 @@ var carousel = function() {
         }
     });
 
-};
+}
 var counter = function() {
 
     $('#section-counter, .wrap-about, .ftco-counter').waypoint(function(direction) {
@@ -79,6 +79,7 @@ var counter = function() {
     }, { offset: '95%' });
 
 };
+
 (function($) {
 
     "use strict";

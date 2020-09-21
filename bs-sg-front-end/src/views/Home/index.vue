@@ -29,6 +29,10 @@ export default {
         self.Products = response.data;
       }
     });
+  },
+  updated: function(){
+    console.log('Home updated');
+    this.InitAnime();
   }
 };
 </script>

@@ -16,9 +16,10 @@ import store from './store'
 // };
 // Vue.mixin(cartObj);
 Vue.prototype.InitAnime = function(){
-    contentWayPoint();
-    counter();
+    console.log('InitAnime');
     carousel();
+    counter();
+    contentWayPoint();
 }
 
 Vue.use(BootstrapVue)
