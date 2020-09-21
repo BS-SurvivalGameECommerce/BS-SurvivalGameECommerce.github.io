@@ -1,6 +1,7 @@
  <script>
 import axios from "axios";
-// import {addToCart} from "../../assets/js/cart.js";
+import ProductCardGroup from '../../components/ProductCardGroup/index.vue'
+
 
 var domain = "https://localhost:5001/";
 var api = domain + "Product/Menu";
@@ -15,6 +16,9 @@ var num;
 var endnum;
 export default {
   name: "Catagory",
+  components: {
+    ProductCardGroup,
+  },
   data() {
     return {
       routername: "",
@@ -61,7 +65,7 @@ export default {
           });
         });
       });
-    },
+    }
   },
   created() {
     console.log(this.$route.params.name);
@@ -97,10 +101,6 @@ export default {
   },
   mounted: function () {},
   methods: {
-    Addcart: function (x) {
-      alert("Add to Cart");
-      this.$store.dispatch("addToCart", { pid: x, quantity: 1 });
-    },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
       console.log(cul);
@@ -161,6 +161,9 @@ export default {
         (item) => item.attrlist[endnum].value == x
       );
     },
+  },
+  updated: function(){
+    this.InitAnime();
   }
 };
 </script>

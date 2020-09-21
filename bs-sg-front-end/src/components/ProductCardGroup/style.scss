@@ -1,13 +1,12 @@
-.product{
+.product {
     display: flex;
     flex-direction: column;
-    .title{
-        h4{
+    .title {
+        h4 {
             font-size: 1.3rem;
         }
-
     }
-    .text{
+    .text {
         margin-top: auto;
         font-size: 24px;
     }
