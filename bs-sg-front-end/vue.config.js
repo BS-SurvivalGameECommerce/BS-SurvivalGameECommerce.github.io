@@ -1,8 +1,8 @@
 
-module.exports = {
-    configureWebpack: {
-      externals: {
-        contentWayPoint : 'contentWayPoint'
-      }
-    }
-}
+// module.exports = {
+//     configureWebpack: {
+//       externals: {
+//         contentWayPoint : 'contentWayPoint'
+//       }
+//     }
+// }
