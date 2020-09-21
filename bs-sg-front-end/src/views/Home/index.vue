@@ -27,13 +27,9 @@ export default {
 
       if (response.isSuccess) {
         self.Products = response.data;
-        this.contentWayPoint();
       }
     });
-  },
-  updated: function () {
-    this.contentWayPoint();
-  },
+  }
 };
 </script>
 

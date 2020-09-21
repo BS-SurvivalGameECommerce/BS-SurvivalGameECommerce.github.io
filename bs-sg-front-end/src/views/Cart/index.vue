@@ -1,4 +1,4 @@
-<script  lang="ts" >
+<script >
 import axios from "axios";
 // import qs from "qs";
 

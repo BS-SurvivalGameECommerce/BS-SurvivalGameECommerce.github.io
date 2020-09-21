@@ -125,10 +125,7 @@ export default {
         (item) => item.attrlist[endnum].value == x
       );
     },
-  },
-  updated: function () {
-    this.contentWayPoint();
-  },
+  }
 };
 </script>
 <template src="./template.html"></template>

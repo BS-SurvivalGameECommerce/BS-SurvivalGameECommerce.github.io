@@ -44,10 +44,7 @@ export default {
     reset: function () {
       this._data.product = product;
     },
-  },
-  updated: function () {
-    this.contentWayPoint();
-  },
+  }
 };
 
 </script>
