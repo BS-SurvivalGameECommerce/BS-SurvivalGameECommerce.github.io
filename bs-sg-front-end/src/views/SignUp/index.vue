@@ -1,10 +1,6 @@
 <script>
-import Breadcrumbs from '../../components/Breadcrumbs/index.vue'
 export default {
-    name: 'About',
-    components:{
-        Breadcrumbs
-    }
+    name: 'SignUp'
 }
 </script>
 <template src = "./template.html"></template>

@@ -19,10 +19,20 @@ export default {
   updated: function(){
     console.log('app updated');
     this.InitAnime();
+
   },
   computed:{
     simpleCartItemsAmount(){
         return this.$store.state.cartItems.length;
+    }
+  },
+  watch:{
+    $route(){
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
     }
   }
 };

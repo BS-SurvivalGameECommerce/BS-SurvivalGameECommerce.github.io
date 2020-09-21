@@ -1,8 +1,12 @@
 <script>
 import axios from "axios";
+import ProductCardGroup from '../../components/ProductCardGroup/index.vue'
 
 export default {
   name: "Home",
+    components:{
+     ProductCardGroup
+  },
   data() {
     return {
       Products: [
@@ -18,8 +22,7 @@ export default {
   mounted: function () {
     let self = this;
     axios({
-      url:
-        "https://sgwebapi-core.azurewebsites.net/Product/NewestSimpleProduct/8",
+      url:`${this.$store.state.domain}Product/NewestSimpleProduct/8`,
       method: "Get",
     }).then((res) => {
       let response = res.data;
@@ -29,9 +32,13 @@ export default {
         self.Products = response.data;
       }
     });
+  },
+  updated: function(){
+    console.log('Home updated');
+    this.InitAnime();
   }
 };
 </script>
 
 <template src="./template.html"></template>
-<style src="./style.css" scoped></style>
+<style lang="scss" src="./style.scss" scoped></style>

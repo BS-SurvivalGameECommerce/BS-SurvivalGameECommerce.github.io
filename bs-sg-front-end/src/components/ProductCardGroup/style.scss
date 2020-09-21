@@ -1,0 +1,14 @@
+.product{
+    display: flex;
+    flex-direction: column;
+    .title{
+        h4{
+            font-size: 1.3rem;
+        }
+
+    }
+    .text{
+        margin-top: auto;
+        font-size: 24px;
+    }
+}
