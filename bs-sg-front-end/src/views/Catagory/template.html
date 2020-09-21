@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate mb-5 text-center">
-                    <p class="breadcrumbs mb-0">
+                    <!-- <p class="breadcrumbs mb-0">
                         <span class="mr-2">
                             <a href="http://localhost:8080/#/">
                                 Home
@@ -21,7 +21,8 @@
                             {{routername}}
                             <i class="fa fa-chevron-right"></i>
                         </span>
-                    </p>
+                    </p> -->
+                    <Breadcrumbs/>
                     <h2 class="mb-0 bread">Products</h2>
                 </div>
             </div>
@@ -34,32 +35,14 @@
                 <div class="col-md-9">
                     <div class="row mb-4">
                     </div>
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-md-4 d-flex" v-for="item in product">
-                            <div class="product ">
-                                <div class="img d-flex align-items-center justify-content-center" :style="{backgroundImage: 'url(' + item.img + ')'}">
-                                    <div class="desc">
-                                        <p class="meta-prod d-flex">
-                                            <a class="d-flex align-items-center justify-content-center"><span
-                                                    v-on:click="Addcart(item.id)"
-                                                    class="flaticon-shopping-bag"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
-                                                    class="flaticon-heart"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
-                                                    class="flaticon-visibility"></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="text text-center">
-                                    <span class="category">{{item.className}}</span>
-                                    <h2 id="product_name">{{item.name}}</h2>
-                                    <p class="mb-0"> <span class="price">${{item.price}}</span></p>
-                                </div>
-                            </div>
-                        </div>
+                            <ProductCard :Product="item"/>
 
-                    </div> -->
-                    <ProductCardGroup :Products="product"/>
+                 
+                        </div>
+                    </div>
+                    <!-- <ProductCardGroup :Products="product"/> -->
 
                     <div class="row mt-5">
                         <div class="col text-center">

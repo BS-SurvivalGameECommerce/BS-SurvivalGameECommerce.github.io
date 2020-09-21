@@ -1,6 +1,7 @@
 <script>
 import axios from "axios";
-import ProductCardGroup from '../../components/ProductCardGroup/index.vue'
+import ProductCard from '../../components/ProductCard/index.vue'
+import Breadcrumbs from '../../components/Breadcrumbs/index.vue'
 
 var domain = "https://localhost:5001/";
 var api = domain + "Product/Menu";
@@ -10,11 +11,11 @@ var CatagoryName = [];
 export default {
   name: "Menu",
   components: {
-    ProductCardGroup,
+    ProductCard,Breadcrumbs
   },
   data() {
     return {
-      Products: product,
+      product: product,
       CatagoryName: CatagoryName,
     };
   },
@@ -38,12 +39,12 @@ export default {
   },
   methods: {
     pselect: function (x) {
-      this._data.Products = product.filter(function (item) {
+      this._data.product = product.filter(function (item) {
         return item.catagoryName == x;
       });
     },
     reset: function () {
-      this._data.Products = product;
+      this._data.product = product;
     },
   },
   updated: function(){

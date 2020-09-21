@@ -19,7 +19,7 @@ const routes = [{
         component: ProductMenu
     },
     {
-        path: '/Catagory/:name',
+        path: '/Menu/:name',
         name: 'Catagory',
         component: Catagory
     },

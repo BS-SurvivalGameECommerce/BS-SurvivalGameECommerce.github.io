@@ -1,6 +1,7 @@
  <script>
 import axios from "axios";
-import ProductCardGroup from '../../components/ProductCardGroup/index.vue'
+import ProductCard from '../../components/ProductCard/index.vue'
+import Breadcrumbs from '../../components/Breadcrumbs/index.vue'
 
 
 var domain = "https://localhost:5001/";
@@ -17,7 +18,7 @@ var endnum;
 export default {
   name: "Catagory",
   components: {
-    ProductCardGroup,
+    ProductCard,Breadcrumbs
   },
   data() {
     return {
