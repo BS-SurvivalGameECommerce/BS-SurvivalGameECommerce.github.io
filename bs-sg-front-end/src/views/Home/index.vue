@@ -1,8 +1,12 @@
 <script>
 import axios from "axios";
+import ProductCardGroup from '../../components/ProductCardGroup/index.vue'
 
 export default {
   name: "Home",
+    components:{
+     ProductCardGroup
+  },
   data() {
     return {
       Products: [

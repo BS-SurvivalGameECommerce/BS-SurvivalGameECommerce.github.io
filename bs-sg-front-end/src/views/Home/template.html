@@ -156,39 +156,9 @@
                     <h2>Newest Product</h2>
                 </div>
             </div>
-            <div class="row product_items" id="newestProductArea">
-                <div class="col-md-4 col-lg-3 d-flex" v-for="item in Products">
-                    <div class="product ftco-animate">
-                        <div class="img productimg d-flex align-items-center justify-content-center" :style="{'background-image' : `url(${item.img})`}">
-                            <div class="desc">
-                                <p class="meta-prod d-flex">
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-shopping-bag"></span>
-                                    </a>
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-heart"></span>
-                                    </a>
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-visibility"></span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="title text-center">
-                            <h4 class="limit-length">
-                                {{item.name}}
-                            </h4>
- 
-                        </div>
-                        <div class="text text-center">
-                            <span class="productprice">
-                                ${{item.price}}
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ProductCardGroup :Products="Products"/>
+            
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <router-link class="btn btn-primary d-block" to="/Menu">
