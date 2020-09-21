@@ -1,6 +1,10 @@
 <script>
+import ProductCard from '../ProductCard/index.vue'
 export default {
   name: "ProductCardGroup",
+  components:{
+    ProductCard
+  },
   props: {
     Products: Array,
   },
