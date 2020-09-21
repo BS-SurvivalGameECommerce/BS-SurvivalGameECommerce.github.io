@@ -17,11 +17,21 @@
     <section class="ftco-section" id="ProductList">
         <div class="container">
             <div class="row">
+              
                 <div class="col-md-9">
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <b-pagination v-model="currentPage" pills :total-rows="totalRows" :per-page="perPage"
+                                    align="center" @change="pageChange">
+                                </b-pagination>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-4">
                     </div>
                     <div class="row">
-                        <div class="col-md-4 d-flex" v-for="item in product">
+                        <div class="col-md-4 d-flex" v-for="item in showItems">
                             <ProductCard :Product="item"/>
                         </div>
                     </div>
@@ -30,15 +40,9 @@
                     <div class="row mt-5">
                         <div class="col text-center">
                             <div class="block-27">
-                                <ul>
-                                    <li><a href="#">&lt;</a></li>
-                                    <li class="active"><span>1</span></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&gt;</a></li>
-                                </ul>
+                                <b-pagination v-model="currentPage" pills :total-rows="totalRows" :per-page="perPage"
+                                    align="center" @change="pageChange">
+                                </b-pagination>
                             </div>
                         </div>
                     </div>

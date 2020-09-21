@@ -1,8 +1,7 @@
  <script>
 import axios from "axios";
-import ProductCard from '../../components/ProductCard/index.vue'
-import Breadcrumbs from '../../components/Breadcrumbs/index.vue'
-
+import ProductCard from "../../components/ProductCard/index.vue";
+import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
 
 var domain = "https://localhost:5001/";
 var api = domain + "Product/Menu";
@@ -18,7 +17,8 @@ var endnum;
 export default {
   name: "Catagory",
   components: {
-    ProductCard,Breadcrumbs
+    ProductCard,
+    Breadcrumbs,
   },
   data() {
     return {
@@ -29,6 +29,10 @@ export default {
       AttrListValues: AttrListValues,
       AttrList: [],
       valueul: "value-ul",
+      showItems: product,
+      perPage: 10,
+      currentPage: 1,
+      totalRows: "",
     };
   },
   watch: {
@@ -44,7 +48,7 @@ export default {
         method: "Get",
       }).then((res) => {
         let response = res.data;
-        console.log(response);
+
         response.data.forEach((item) => {
           product.push(item);
         });
@@ -52,7 +56,10 @@ export default {
           (item) => item.catagoryName == routername
         );
         this._data.product = product;
-        console.log(product);
+        this._data.showItems = product;
+
+        this._data.totalRows = product.length;
+
         this._data.product.forEach((item) => {
           if (this._data.ClassName.indexOf(item.className) == -1) {
             this._data.ClassName.push(item.className);
@@ -65,11 +72,16 @@ export default {
             }
           });
         });
+      this.paginate(this.perPage, 0);
+
       });
     }
   },
   created() {
-    console.log(this.$route.params.name);
+  
+  },
+  mounted () {
+     console.log(this.$route.params.name);
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
     axios({
@@ -79,13 +91,16 @@ export default {
       // ClassName=[]
       // AttrListName=[]
       let response = res.data;
-      console.log(response);
+
       response.data.forEach((item) => {
         product.push(item);
       });
       product = response.data.filter((item) => item.catagoryName == routername);
       this._data.product = product;
-      console.log(product);
+      this._data.showItems = product;
+
+      this._data.totalRows = product.length;
+
       this._data.product.forEach((item) => {
         if (this._data.ClassName.indexOf(item.className) == -1) {
           this._data.ClassName.push(item.className);
@@ -98,10 +113,28 @@ export default {
           }
         });
       });
+    this.paginate(this.perPage,0)
+
     });
+    // this._data.showItems = this._data.product.slice(
+    //   0 * this.perPage,
+    //   (0 + 1) * this.perPage
+    // ); 
   },
-  mounted: function () {},
   methods: {
+    paginate(page_size, page_number) {
+      // let itemsToParse = this.items
+      this._data.showItems = this._data.product.slice(
+        page_number * page_size,
+        (page_number + 1) * page_size
+      );
+      console.log(this.showItems);
+      console.log(page_size);
+      console.log(page_number);
+    },
+    pageChange: function (p) {
+      this.paginate(this.perPage, p - 1);
+    },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
       console.log(cul);
@@ -163,9 +196,9 @@ export default {
       );
     },
   },
-  updated: function(){
+  updated: function () {
     this.InitAnime();
-  }
+  },
 };
 </script>
 <template src="./template.html"></template>

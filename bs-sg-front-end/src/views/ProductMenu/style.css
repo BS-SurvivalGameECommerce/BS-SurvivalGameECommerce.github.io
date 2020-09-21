@@ -1,9 +1,6 @@
-#product_name {
-    font-weight: bolder;
-    font-size: 16px;
-}
 
-.filter {
-    background-color: #fff;
-    border: 0px;
+.page-item.active .page-link {
+    background-color: #5A4D4C !important;
+    color: #fff !important;
+    border: 1px solid transparent !important;
 }
