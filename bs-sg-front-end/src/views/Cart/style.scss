@@ -1,0 +1,92 @@
+#cartArea {
+    width: 100%;
+    table {
+        .productArea {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            .imgArea {
+                flex-grow: 1;
+                min-width: 100px;
+                padding: 0 5px;
+                .img {
+                    width: 100%;
+                    height: 0;
+                    padding-top: 100%;
+                    position: relative;
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: 50% 50%
+                    }
+                }
+            }
+            .textArea {
+                span {
+                    margin: 10px 0;
+                    width: 100%;
+                    display: block;
+                    word-wrap: break-word;
+                }
+            }
+        }
+        td {
+            width: 25%;
+        }
+        td.last {
+            width: 50px;
+        }
+    }
+}
+
+.cart-all-total {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    span.title {
+        text-transform: uppercase;
+        padding: 0 20px 0 0;
+    }
+    span.total-price {
+        font-weight: bold;
+        font-size: 20px;
+    }
+}
+
+.loading {
+    font-size: 84px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-align: center;
+    span {
+        display: inline-block;
+    }
+}
+
+.loading05 {
+    perspective: 1000px;
+    span {
+        transform-origin: 50% 50% -25px;
+        transform-style: preserve-3d;
+        animation: loading05 1.6s infinite;
+        @for $i from 1 through 6 {
+            &:nth-child(#{$i+1}) {
+                animation-delay: #{$i*.1}s;
+            }
+        }
+    }
+}
+
+@keyframes loading05 {
+    0% {
+        transform: rotateX(-360deg);
+    }
+    70% {
+        transform: rotateX(0);
+    }
+}

@@ -1,0 +1,144 @@
+<div>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <p class="breadcrumbs mb-0">
+                        <span class="mr-2">
+                            <a href="index.html">
+                                Home <i class="fa fa-chevron-right"></i>
+                            </a>
+                        </span> <span>
+                            Cart <i class="fa fa-chevron-right"></i>
+                        </span>
+                    </p>
+                    <h2 class="mb-0 bread">My Cart</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="loaging w-100" v-if="isLoading">
+                    <div class="loading loading05">
+                        <span>L</span>
+                        <span>O</span>
+                        <span>A</span>
+                        <span>D</span>
+                        <span>I</span>
+                        <span>N</span>
+                        <span>G</span>
+                    </div>
+                </div>
+                <div id="cartArea" v-if="!isLoading">
+                    <b-table :items="cartItems" :fields="fields" thead-class="thead-primary">
+                        <template v-slot:cell(product)="data">
+                            <div class="productArea">
+                                <div class="imgArea">
+                                    <div class="img">
+                                        <img :src="data.item.img" alt="">
+                                    </div>
+                                </div>
+                                <div class="textArea">
+                                    <span>
+                                        {{data.item.name}}
+                                    </span>
+                                </div>
+                            </div>
+                        </template>
+                        <template v-slot:cell(quantity)="data">
+                            <b-form-spinbutton v-model="data.item.quantity" min="1" max="100" inline>
+                            </b-form-spinbutton>
+                        </template>
+                        <template v-slot:cell(total)="data">
+                            <div>
+                                <span>
+                                    {{productTotal(data.index)}}
+                                </span>
+                            </div>
+                        </template>
+                        <template v-slot:cell(delete)="data">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                @click="removeFromCartFunc(data.item.pid)">
+                                <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                            </button>
+                        </template>
+                    </b-table>
+                    <div class="cart-all-total">
+                        <span class="title">Total:</span>
+                        <span class="total-price">$</span>
+                        <span class="total-price">
+                            {{total}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="needLogin">
+                <div class="row">
+                    <div class="accordion w-100 mt-5" role="tablist">
+                        <b-card no-body class="mb-0">
+                            <b-card-header header-tag="header" class="p-0" role="tab">
+                                <b-button block v-b-toggle.accordion-1 :variant="PaymentMethod.valid? 'outline-success' : 'outline-danger'">Payment Method
+                                </b-button>
+                            </b-card-header>
+                            <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
+                                <b-card-body>
+                                    <b-card-text>I start opened because <code>visible</code> is <code>true</code>
+                                    </b-card-text>
+
+                                </b-card-body>
+                            </b-collapse>
+                        </b-card>
+
+                        <b-card no-body class="mb-0">
+                            <b-card-header header-tag="header" class="p-0" role="tab">
+                                <b-button block v-b-toggle.accordion-2 :variant="DeliveryAddress.valid? 'outline-success' : 'outline-danger'">Delivery Address
+                                </b-button>
+                            </b-card-header>
+                            <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
+                                <b-card-body>
+                                    <p>
+                                        7-11 ,住家 ,全家
+                                    </p>
+                                </b-card-body>
+                            </b-collapse>
+                        </b-card>
+                    </div>
+
+                </div>
+                <div class="row justify-content-end">
+                    <div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
+                        <div class="cart-total mb-3">
+                            <h3>Cart Totals</h3>
+                            <p class="d-flex">
+                                <span>Subtotal</span>
+                                <span>$20.60</span>
+                            </p>
+                            <p class="d-flex">
+                                <span>Delivery</span>
+                                <span>$0.00</span>
+                            </p>
+                            <p class="d-flex">
+                                <span>Discount</span>
+                                <span>$3.00</span>
+                            </p>
+                            <hr>
+                            <p class="d-flex total-price">
+                                <span>Total</span>
+                                <span>$17.60</span>
+                            </p>
+                        </div>
+                        <b-button @click="confirmOrder" class="w-100 py-3 px-4" v-b-modal.modal-wait-order :variant="confirmOrderValid? 'outline-success' : 'outline-danger'">
+                            Confirm Order
+                        </b-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <b-modal id="modal-wait-order" centered title="BootstrapVue">
+            <p class="my-4">Vertically centered modal!</p>
+        </b-modal>
+    </section>
+</div>
