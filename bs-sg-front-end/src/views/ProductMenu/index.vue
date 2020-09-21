@@ -1,7 +1,7 @@
 <script>
 import axios from "axios";
 
-var domain = "https://localhost:44306/";
+var domain = "https://localhost:5001/";
 var api=domain+"Product/Menu"
 var product = [];
 var CatagoryName = [];
@@ -34,7 +34,7 @@ export default {
   methods: {
     Addcart:function(x){
       alert("Add to Cart")
-      this.addToCart(x,1);
+       this.$store.dispatch("addToCart", { pid: x, quantity: 1 });
     },
     pselect: function (x) {
       this._data.product = product.filter(function (item) {
