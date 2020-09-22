@@ -21,11 +21,14 @@ export default {
       showItems: product,
       perPage: 10,
       currentPage: 1,
-      totalRows:50
+      totalRows: 50,
+      selectedCatagory: "",
+      SortName: ["name", "price", "Newest"],
+      selectedsort: "",
+      Sortselect: ["Asc", "Desc"],
     };
   },
-  computed: {
-  },
+  computed: {},
   mounted: function () {
     axios({
       url: api,
@@ -42,28 +45,78 @@ export default {
           CatagoryName.push(item.catagoryName);
         }
       });
-    this.paginate(this.perPage,0)
-
+      this.paginate(this.perPage, 0);
     });
   },
   methods: {
+    Asc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price > b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name > b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid > b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+
+    },
+    Desc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price < b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name < b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid < b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+
+    },
+    sortchange(event) {
+      return event.target.value == "Asc"? this.Asc(this.selectedCatagory): this.Desc(this.selectedCatagory);
+    },
+    typechange(event) {
+      if (this.selectedsort == "") {
+        return;
+      }
+      return this.selectedsort == "Asc"? this.Asc(event.target.value): this.Desc(event.target.value);
+    },
     paginate(page_size, page_number) {
-      // let itemsToParse = this.items
-      this.showItems = this.product.slice(page_number * page_size,(page_number + 1) * page_size);
+      this.showItems = this.product.slice(
+        page_number * page_size,
+        (page_number + 1) * page_size
+      );
       console.log(this.showItems);
       console.log(page_size);
       console.log(page_number);
     },
     pageChange: function (p) {
       this.paginate(this.perPage, p - 1);
-    },
-    pselect: function (x) {
-      this._data.product = product.filter(function (item) {
-        return item.catagoryName == x;
-      });
-    },
-    reset: function () {
-      this._data.product = product;
     },
   },
   updated: function () {

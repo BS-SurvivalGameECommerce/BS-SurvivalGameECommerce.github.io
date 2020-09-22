@@ -33,6 +33,10 @@ export default {
       perPage: 10,
       currentPage: 1,
       totalRows: "",
+      selectedCatagory: "",
+      SortName: ["name", "price", "Newest"],
+      selectedsort: "",
+      Sortselect: ["Asc", "Desc"],
     };
   },
   watch: {
@@ -72,16 +76,13 @@ export default {
             }
           });
         });
-      this.paginate(this.perPage, 0);
-
+        this.paginate(this.perPage, 0);
       });
-    }
+    },
   },
-  created() {
-  
-  },
-  mounted () {
-     console.log(this.$route.params.name);
+  created() {},
+  mounted() {
+    console.log(this.$route.params.name);
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
     axios({
@@ -113,24 +114,74 @@ export default {
           }
         });
       });
-    this.paginate(this.perPage,0)
-
+      this.paginate(this.perPage, 0);
     });
-    // this._data.showItems = this._data.product.slice(
-    //   0 * this.perPage,
-    //   (0 + 1) * this.perPage
-    // ); 
   },
   methods: {
+    Asc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price > b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name > b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid > b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+    },
+    Desc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price < b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name < b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid < b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+    },
+    sortchange(event) {
+      return event.target.value == "Asc"
+        ? this.Asc(this.selectedCatagory)
+        : this.Desc(this.selectedCatagory);
+    },
+    typechange(event) {
+      if (this.selectedsort == "") {
+        return;
+      }
+      return this.selectedsort == "Asc"
+        ? this.Asc(event.target.value)
+        : this.Desc(event.target.value);
+    },
     paginate(page_size, page_number) {
-      // let itemsToParse = this.items
       this._data.showItems = this._data.product.slice(
         page_number * page_size,
         (page_number + 1) * page_size
       );
-      console.log(this.showItems);
-      console.log(page_size);
-      console.log(page_number);
     },
     pageChange: function (p) {
       this.paginate(this.perPage, p - 1);
@@ -141,7 +192,7 @@ export default {
       cul.forEach((item) => {
         item.style.display = "none";
       });
-      this._data.product = product.filter((item) => item.className == x);
+      this._data.showItems = product.filter((item) => item.className == x);
     },
     reset: function () {
       var cul = document.getElementsByClassName("value-ul");
@@ -149,7 +200,7 @@ export default {
       cul.forEach((item) => {
         item.style.display = "none";
       });
-      this._data.product = product;
+      this._data.showItems = product;
     },
     display: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -160,9 +211,6 @@ export default {
 
       var dul = document.getElementById(x);
       dul.style.display = "block";
-      // if (valueul != undefined) {
-      //   valueul.remove();
-      // }
       AttrList = [];
       AttrListValues.length = 0;
       console.log(x);
@@ -191,7 +239,7 @@ export default {
           endnum = num;
         }
       });
-      this._data.product = product.filter(
+      this._data.showItems = product.filter(
         (item) => item.attrlist[endnum].value == x
       );
     },
