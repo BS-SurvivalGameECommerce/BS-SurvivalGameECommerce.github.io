@@ -1,0 +1,282 @@
+<div>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/Member_BG.jpg');"
+    data-stellar-background-ratio="0.5">
+<div class="overlay"></div>
+<div class="container">
+   <div class="row no-gutters slider-text align-items-end justify-content-center">
+       <div class="col-md-9 ftco-animate mb-5 text-center">
+           <p class="breadcrumbs mb-0">
+               <span class="mr-2">
+                   <a href="index.html">
+                       Home <i class="fa fa-chevron-right"></i>
+                   </a>
+               </span> <span>
+                   My Account <i class="fa fa-chevron-right"></i>
+               </span>
+           </p>
+           <h2 class="mb-0 bread">My Account</h2>
+       </div>
+   </div>
+</div>
+</section>
+
+<section class="ftco-section">
+<div class="container">
+   <div class="row justify-content-center">
+       <div class="col-xl-10 ftco-animate">
+           <div class="billing-form">
+
+               <div class="row">
+                   <div class="col-12 col-md-3 NavMember my-3">
+                       <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+                           <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill"
+                              href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                              aria-selected="true">Profile</a>
+                           <a class="nav-link" id="v-pills-history-tab" data-toggle="pill"
+                              href="#v-pills-history" role="tab" aria-controls="v-pills-history"
+                              aria-selected="false">History</a>
+                           <a class="nav-link" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">Wishlist</a>
+                       </div>
+                   </div>
+
+
+
+                   <div class="col-12 col-md-9">
+                       <div id="MemberCenter" class="tab-content" >
+
+                           <!-- Profile內容 -->
+                           <div  class="tab-pane fade show active" id="v-pills-profile" role="tabpanel"
+                                aria-labelledby="v-pills-profile-tab">
+
+                               <div class="row">
+                                   <div class="col-12  mb-3 d-flex justify-content-end align-items-center">
+                                           <span class="pr-3 pb-2 Modify">Modify member information</span>
+                                       <div class="">
+                                           <div class="onoffswitch">
+                                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox " id="myonoffswitch" tabindex="0" v-bind:checked="Checkselected" @click="change">
+                                        <label class="onoffswitch-label" for="myonoffswitch" data-toggle="tooltip" data-placement="bottom"
+                                        title="After modification, press save"></label>
+                                    </div>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Name">Name <span class="need">*</span></label>
+                                    <input type="text" class="form-control input py-0" ref="name" v-model="inputData.Name" v-bind:class="{'is-invalid':checkData.NameError}" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]"name="Name">
+                                    <div class="invalid-feedback">{{checkData.NameErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+    
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="EmailAddress">Email Address <span class="need">*</span></label>
+                                    <input type="email" class="form-control input" ref="mail"  v-model="inputData.Email" v-bind:class="{'is-invalid':checkData.EmailError}" name="Email" placeholder="ex:a123@gmail.com" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
+                                    <div class="invalid-feedback">{{checkData.EmailErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+
+<!--     
+                            <div class="col-md-12 Password">
+                                <div class="form-group">
+                                    <label for="Password">Change Password <span class="need">*</span></label>
+                                    <input type="password" class="form-control input" v-model="inputData.Password" v-bind:class="{'is-invalid':checkData.PasswordError}" name="Password" >
+                                    <div class="invalid-feedback">{{checkData.PasswordErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+    
+                            <div class="col-md-12 Password">
+                                <div class="form-group">
+                                    <label for="CheckPassword">Check Password <span class="need">*</span></label>
+                                    <input type="password" class="form-control" v-model="inputData.CheckPassword" v-bind:class="{'is-invalid':checkData.CheckPasswordError}" name="CheckPassword" >
+                                    <div class="invalid-feedback">{{checkData.CheckPasswordErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div> -->
+    
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="Birthday">Birthday <span class="need">*</span></label>
+                                    <div class="BirthdayBox">
+                                        <input type="text" class="form-control" v-model="inputData.Birthday" name="Birth" readonly onfocus="this.blur()" style="background-color: rgb(242 242 242)!important;color: rgb(127 127 127 / 75%)!important;">
+                                        <div class="BirthdayText">
+                                            <p>※Do not buy toy guns under the age of 18</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+    
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Phone">Phone <span class="need">*</span></label>
+                                    <input type="text" class="form-control input" ref="phone" v-model="inputData.Phone" v-bind:class="{'is-invalid':checkData.PhoneError}" name="Phone" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
+                                    <div class="invalid-feedback">{{checkData.PhoneErrorMsg}}</div>
+                                </div> 
+                            </div>
+                            <div class="w-100"></div>
+    
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="PostCode">Postcode / ZIP <span class="need">*</span></label>
+                                    <input type="text" class="form-control input" ref="postcode" v-model="inputData.Postcode" v-bind:class="{'is-invalid':checkData.PostcodeError}" name="PostCode" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
+                                    <div class="invalid-feedback">{{checkData.PostcodeErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+    
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="Address">Address <span class="need">*</span></label>
+                                    <input type="text" class="form-control input" ref="address" v-model="inputData.Address" v-bind:class="{'is-invalid':checkData.AddressError}" name="Address" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
+                                    <div class="invalid-feedback">{{checkData.AddressErrorMsg}}</div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="form-group Save col-12 row justify-content-end" v-bind:class="{'d-none':inputstatus.button}">
+                                <div class="Edit">
+                                    <button class="btn btn-primary" id="ModifySave">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+                           </div>
+
+                           <!-- History 內容 -->
+                           <div class="tab-pane fade" id="v-pills-history" role="tabpanel"
+                                aria-labelledby="v-pills-history-tab">
+                                <div class="row ">
+                                    <!-- Main table element -->
+                                    <b-table show-empty small sticky-header head-variant="light rounded" stacked="md" :items="history" :fields="fields" :current-page="currentPage"
+                                        :per-page="perPage" :filter="filter" :filterIncludedFields="filterOn" :sort-by.sync="sortBy"
+                                        :sort-desc.sync="sortDesc" :sort-direction="sortDirection" @filtered="onFiltered">
+                                        
+                                        <template v-slot:cell(actions)="row">
+                                            <b-button size="sm" @click="row.toggleDetails">
+                                                {{ row.detailsShowing ? 'Hide' : 'Show' }} Details
+                                            </b-button>
+                                        </template>
+                                        <template v-slot:row-details="row">
+                                            <b-card>
+                                                <div class="row  alert  text-center alert-dark mb-0">
+                                                    <div class="col-2">圖片</div>
+                                                    <div class="col-3">名稱</div>
+                                                    <div class="col-2">單價</div>
+                                                    <div class="col-2">數量</div>
+                                                    <div class="col-1">折扣</div>
+                                                    <div class="col-2">單品總價</div>
+                                                </div>
+                                                <div class="row text-center align-items-center border-bottom py-1"  v-for="item in row.item.orderDetailList">
+                                                    <div class="col-2">
+                                                        <div class="WishlistImg ">
+                                                            <img class="w-100" :src="item.img">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="##" data-toggle="modal" data-target="#WishlistChange">
+                                                            {{item.productName}}
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span>
+                                                            {{item.unitPrice}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span>
+                                                            {{item.quantity}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        <span>
+                                                            {{item.discount}}
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <span>
+                                                            {{item.totalPrice}}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 my-auto text-dark pt-2 font-weight-bold">
+                                                    <span>
+                                                        送達地址：
+                                                    </span>
+                                                    <span>
+                                                        {{ row.item.shipAddress}}
+                                                    </span>
+                                                </div>
+                                            </b-card>
+                                        </template>
+                                    </b-table>
+                                    <div class="col-12" align="right">
+                                    <b-col sm="7" md="6" class="my-1">
+                                        <b-pagination v-model="currentPage" :total-rows="totalRows" :per-page="perPage" align="fill"
+                                            size="sm" class="my-0"></b-pagination>
+                                    </b-col>
+                                </div>
+                                    </div>
+                           </div>
+
+
+                           <!-- Wishlist 內容 -->
+                           <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel"
+                                aria-labelledby="v-pills-wishlist-tab">
+                               <div class="WishlistHeader container mt-3 alert  text-center alert-dark">
+                                   <div class="row">
+                                       <div class="WishlistImg col-3">商品照片</div>
+                                       <div class="WishlistName col-3">商品名稱</div>
+                                       <div class="WishlistPrice col-3">價格</div>
+                                       <div class="WishlistOperating col-3"></div>
+                                   </div>
+                               </div>
+                               <!-- ---------------------------------------------------------------------------------------- -->
+                               <div class="WishlistList container mb-5">
+                                   <div class="WishlistSingle row mb-3 text-center" v-for="item in wishlist">
+                                       <div class="WishlistPicWarp col-3">
+                                           <div class="WishlistImg ">
+                                               <img class="w-100" :src="item.img">
+                                           </div>
+                                       </div>
+                                       <div class="WishlistName col-3 my-auto">
+                                           <a href="##" data-toggle="modal" data-target="#WishlistChange">
+                                               {{item.name}}
+                                           </a>
+                                       </div>
+                                       <div class="WishlistPrice  col-3 my-auto">
+                                           <span>
+                                               單價：
+                                           </span>
+                                           <span>
+                                               {{item.price}}
+                                           </span>
+                                       </div>
+                                       <div class="WishlistRemove my-auto col-3 d-flex">
+                                           <button class="border-0 btn"><i class="fa fa-trash fa-4x"></i> </button>
+                                           <button class="btn border-0"><i class="fa fa-shopping-cart fa-4x"></i></button>
+                                               
+                                           
+                                       </div>
+                                   </div>
+                               </div>
+
+
+                           </div>
+
+                       </div>
+
+                   </div>
+
+               </div>
+
+           </div>
+
+       </div>
+   </div>
+</div>
+</section>
+</div>
