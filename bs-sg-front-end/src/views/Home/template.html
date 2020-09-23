@@ -1,5 +1,5 @@
 <div>
-    <div class="hero-wrap" style="background-image: url('/assets/images/bg1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap" style="background-image: url('../../Assets/images/bg1.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -7,9 +7,18 @@
                     <div class="text w-100 text-center">
                         <h1 class="mb-4">May <span>the odds </span>be ever <span>in your favor</span>.</h1>
                         <p>
-                            <a href="#" class="btn btn-primary py-2 px-4">Shop
-                                Now</a>
-                            <a href="#" class="btn btn-white btn-outline-white py-2 px-4">Read more</a>
+                            <router-link class="btn btn-primary py-2 px-4" to="/Menu">
+                                Shop Now
+                            </router-link>
+                            <router-link class="btn btn-white btn-outline-white py-2 px-4" to="/About">
+                                Read more
+                            </router-link>
+                            <!-- <a href="#" class="btn btn-primary py-2 px-4">
+                                Shop Now
+                            </a>
+                            <a href="#" class="btn btn-white btn-outline-white py-2 px-4">
+                                Read more
+                            </a> -->
                         </p>
                     </div>
                 </div>
@@ -66,7 +75,7 @@
     <section class="ftco-section ftco-no-pb ">
         <div class="container ">
             <div class="row ">
-                <div class="col-md-6 img img-3 d-flex justify-content-center align-items-center " style="background-image: url(/assets/images/home.jpg); ">
+                <div class="col-md-6 img img-3 d-flex justify-content-center align-items-center " style="background-image: url(../../Assets/images/home.jpg); ">
                 </div>
                 <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5 ">
                     <div class="heading-section ">
@@ -90,46 +99,58 @@
         </div>
     </section>
 
-    <section class="ftco-section ftco-no-pb ">
-        <div class="container ">
-            <div class="row ">
-                <div class="col-md-6 col-lg-3 ">
-                    <div class="sort w-100 text-center ftco-animate ">
-                        <a href="# ">
-                            <div class="img " style="background-image: url(/assets/images/G_1.jpg); width: 215px; height: 215px; ">
-                            </div>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="sort w-100 text-center ftco-animate">
+                        <router-link to="/Catagory/Gun">
+                            <div class="img" style="background-image: url(../../Assets/images/G_1.jpg); width: 215px; height: 215px;"></div>
                             <h3>Gun</h3>
-                        </a>
-
+                        </router-link>
+                        <!-- <a href="@Url.Action(" ProductMenu ","Product " ,new { ID = "CG001 "})">
+                            <div class="img" style="background-image: url(../../Assets/images/G_1.jpg); width: 215px; height: 215px;"></div>
+                            <h3>Gun</h3>
+                        </a> -->
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 ">
-                    <div class="sort w-100 text-center ftco-animate ">
-                        <a href="# ">
-                            <div class="img " style="background-image: url(/assets/images/C_1.jpg); width: 215px; height: 215px; ">
-                            </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="sort w-100 text-center ftco-animate">
+                        <router-link to="/Catagory/Clothes">
+                            <div class="img" style="background-image: url(../../Assets/images/C_1.jpg); width: 215px; height: 215px;"></div>
                             <h3>Clothes</h3>
-                        </a>
-
+                        </router-link>
+                        <!-- <a href="@Url.Action(" ProductMenu ","Product " ,new { ID = "CG001 "})">
+                            <div class="img" style="background-image: url(../../Assets/images/C_1.jpg); width: 215px; height: 215px;"></div>
+                            <h3>Clothes</h3>
+                        </a> -->
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 ">
-                    <div class="sort w-100 text-center ftco-animate ">
-                        <a href="# ">
-                            <div class="img " style="background-image: url(/assets/images/A_1.jpg); width: 215px; height: 215px; ">
-                            </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="sort w-100 text-center ftco-animate">
+                        <router-link to="/Catagory/Accessories">
+                            <div class="img" style="background-image: url(../../Assets/images/A_1.jpg); width: 215px; height: 215px;"></div>
                             <h3>Accessories</h3>
-                        </a>
+                        </router-link>
+                        <!-- <a href="@Url.Action(" ProductMenu ","Product " ,new { ID = "CG001 "})">
+                            <div class="img" style="background-image: url(../../Assets/images/A_1.jpg); width: 215px; height: 215px;"></div>
+                            <h3>Accessories</h3>
+                        </a> -->
 
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 ">
-                    <div class="sort w-100 text-center ftco-animate ">
-                        <a href="# ">
-                            <div class="img " style="background-image: url(../assets/images/M_1.jpg); width: 215px; height: 215px; ">
-                            </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="sort w-100 text-center ftco-animate">
+                        <router-link to="/Catagory/Magazine">
+                            <div class="img" style="background-image: url(../../Assets/images/M_1.jpg); width: 215px; height: 215px;"></div>
                             <h3>Magazine</h3>
-                        </a>
+                        </router-link>
+                        <!-- <a href="@Url.Action(" ProductMenu ","Product " ,new { ID = "CG001 "})">
+                            
+                            <div class="img" style="background-image: url(../../Assets/images/M_1.jpg); width: 215px; height: 215px;"></div>
+                            <h3>Magazine</h3>
+                        </a> -->
 
                     </div>
                 </div>
@@ -144,36 +165,14 @@
                     <h2>Newest Product</h2>
                 </div>
             </div>
-            <div class="row product_items" id="newestProductArea">
-                <div class="col-md-3 d-flex" v-for="item in Products">
-                    <div class="product ftco-animate">
-                        <div class="img productimg d-flex align-items-center justify-content-center" :style="{'background-image' : `url(${item.img})`}">
-                            <div class="desc">
-                                <p class="meta-prod d-flex">
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-shopping-bag"></span>
-                                    </a>
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-heart"></span>
-                                    </a>
-                                    <a href="#" class="d-flex align-items-center justify-content-center">
-                                        <span class="flaticon-visibility"></span>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
 
-                        <div class="producttext text-center">
-                            <h4 class="limit-length">
-                                {{item.name}}
-                            </h4>
-                            <span class="productprice">
-                                {{item.price}}
-                            </span>
-                        </div>
-                    </div>
+            <!-- <ProductCardGroup :Products="Products"/> -->
+            <div class="row">
+                <div class="col-md-4 col-lg-3 d-flex" v-for="item in Products">
+                    <ProductCard :Product="item" />
                 </div>
             </div>
+
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <router-link class="btn btn-primary d-block" to="/Menu">

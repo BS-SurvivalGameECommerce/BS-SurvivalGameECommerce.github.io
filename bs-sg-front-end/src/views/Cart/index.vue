@@ -1,10 +1,14 @@
-<script  lang="ts" >
+<script >
 import axios from "axios";
+import Breadcrumbs from '../../components/Breadcrumbs/index.vue'
 // import qs from "qs";
 
 // var domain = "https://localhost:5001/";
 export default {
   name: "cart",
+  components:{
+      Breadcrumbs
+  },
   data() {
     return {
       memberID: "MB014",

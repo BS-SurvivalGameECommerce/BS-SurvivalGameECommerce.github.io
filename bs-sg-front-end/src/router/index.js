@@ -20,18 +20,27 @@ const routes = [{
         component: ProductMenu
     },
     {
-        path: '/Catagory/:name',
+        path: '/Menu/:name',
         name: 'Catagory',
         component: Catagory
     },
     {
-        path: '/about',
+        path: '/About',
         name: 'About',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/About.vue')
+            import ( /* webpackChunkName: "about" */ '../views/About/index.vue')
+    },
+    {
+        path: '/Contact',
+        name: 'Contact',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () =>
+            import ( /* webpackChunkName: "Contact" */ '../views/Contact/index.vue')
     },
     {
         path: '/Cart',
@@ -39,7 +48,13 @@ const routes = [{
         component: Cart
     },
     {
-        Path:'/MemberCenter',
+        path: '/SignUp',
+        name: 'SignUp',
+        component: () =>
+            import ( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
+    },
+    {
+                Path:'/MemberCenter',
         name:'MemberCenter',
         component:MemberCenter
     }

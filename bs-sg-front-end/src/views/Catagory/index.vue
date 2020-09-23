@@ -1,9 +1,10 @@
  <script>
 import axios from "axios";
-// import {addToCart} from "../../assets/js/cart.js";
+import ProductCard from "../../components/ProductCard/index.vue";
+import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
 
-var domain = "https://localhost:44306/";
-var api=domain+"Product/Menu"
+var domain = "https://localhost:5001/";
+var api = domain + "Product/Menu";
 var product = [];
 // var AttrListName = [];
 var AttrListValues = [];
@@ -15,6 +16,10 @@ var num;
 var endnum;
 export default {
   name: "Catagory",
+  components: {
+    ProductCard,
+    Breadcrumbs,
+  },
   data() {
     return {
       routername: "",
@@ -24,9 +29,59 @@ export default {
       AttrListValues: AttrListValues,
       AttrList: [],
       valueul: "value-ul",
+      showItems: product,
+      perPage: 10,
+      currentPage: 1,
+      totalRows: "",
+      selectedCatagory: "",
+      SortName: ["name", "price", "Newest"],
+      selectedsort: "",
+      Sortselect: ["Asc", "Desc"],
     };
   },
-  created() {
+  watch: {
+    $route(to) {
+      product = [];
+      this._data.AttrListName = [];
+      this._data.ClassName = [];
+      console.log(to.params.name);
+      this._data.routername = to.params.name;
+      routername = to.params.name;
+      axios({
+        url: api,
+        method: "Get",
+      }).then((res) => {
+        let response = res.data;
+
+        response.data.forEach((item) => {
+          product.push(item);
+        });
+        product = response.data.filter(
+          (item) => item.catagoryName == routername
+        );
+        this._data.product = product;
+        this._data.showItems = product;
+
+        this._data.totalRows = product.length;
+
+        this._data.product.forEach((item) => {
+          if (this._data.ClassName.indexOf(item.className) == -1) {
+            this._data.ClassName.push(item.className);
+          }
+        });
+        this._data.product.forEach((item) => {
+          item.attrlist.forEach((aitem) => {
+            if (this._data.AttrListName.indexOf(aitem.name) == -1) {
+              this._data.AttrListName.push(aitem.name);
+            }
+          });
+        });
+        this.paginate(this.perPage, 0);
+      });
+    },
+  },
+  created() {},
+  mounted() {
     console.log(this.$route.params.name);
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
@@ -37,13 +92,16 @@ export default {
       // ClassName=[]
       // AttrListName=[]
       let response = res.data;
-      console.log(response);
+
       response.data.forEach((item) => {
         product.push(item);
       });
       product = response.data.filter((item) => item.catagoryName == routername);
       this._data.product = product;
-      console.log(product);
+      this._data.showItems = product;
+
+      this._data.totalRows = product.length;
+
       this._data.product.forEach((item) => {
         if (this._data.ClassName.indexOf(item.className) == -1) {
           this._data.ClassName.push(item.className);
@@ -56,14 +114,77 @@ export default {
           }
         });
       });
+      this.paginate(this.perPage, 0);
     });
   },
-  mounted: function () {
-  },
   methods: {
-    Addcart:function(x){
-      alert("Add to Cart")
-      this.addToCart(x,1);
+    Asc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price > b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name > b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid > b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+    },
+    Desc(x) {
+      switch (x) {
+        case "":
+          alert("select type");
+          break;
+        case "price":
+          this.product = this.product.sort(function (a, b) {
+            return a.price < b.price ? 1 : -1;
+          });
+          break;
+        case "name":
+          this.product = this.product.sort(function (a, b) {
+            return a.name < b.name ? 1 : -1;
+          });
+          break;
+        case "Newest":
+          this.product = this.product.sort(function (a, b) {
+            return a.pid < b.pid ? 1 : -1;
+          });
+          break;
+      }
+      this.paginate(this.perPage, 0);
+    },
+    sortchange(event) {
+      return event.target.value == "Asc"
+        ? this.Asc(this.selectedCatagory)
+        : this.Desc(this.selectedCatagory);
+    },
+    typechange(event) {
+      if (this.selectedsort == "") {
+        return;
+      }
+      return this.selectedsort == "Asc"
+        ? this.Asc(event.target.value)
+        : this.Desc(event.target.value);
+    },
+    paginate(page_size, page_number) {
+      this._data.showItems = this._data.product.slice(
+        page_number * page_size,
+        (page_number + 1) * page_size
+      );
+    },
+    pageChange: function (p) {
+      this.paginate(this.perPage, p - 1);
     },
     pselect: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -71,7 +192,7 @@ export default {
       cul.forEach((item) => {
         item.style.display = "none";
       });
-      this._data.product = product.filter((item) => item.className == x);
+      this._data.showItems = product.filter((item) => item.className == x);
     },
     reset: function () {
       var cul = document.getElementsByClassName("value-ul");
@@ -79,7 +200,7 @@ export default {
       cul.forEach((item) => {
         item.style.display = "none";
       });
-      this._data.product = product;
+      this._data.showItems = product;
     },
     display: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -90,9 +211,6 @@ export default {
 
       var dul = document.getElementById(x);
       dul.style.display = "block";
-      // if (valueul != undefined) {
-      //   valueul.remove();
-      // }
       AttrList = [];
       AttrListValues.length = 0;
       console.log(x);
@@ -121,13 +239,13 @@ export default {
           endnum = num;
         }
       });
-      this._data.product = product.filter(
+      this._data.showItems = product.filter(
         (item) => item.attrlist[endnum].value == x
       );
     },
   },
   updated: function () {
-    this.contentWayPoint();
+    this.InitAnime();
   },
 };
 </script>

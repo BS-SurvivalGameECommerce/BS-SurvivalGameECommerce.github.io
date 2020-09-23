@@ -5,24 +5,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate mb-5 text-center">
-                    <p class="breadcrumbs mb-0">
-                        <span class="mr-2">
-                            <a href="http://localhost:8080/#/">
-                                Home
-                                <i class="fa fa-chevron-right"></i>
-                            </a>
-                        </span>
-                        <span>
-                            <a href="http://localhost:8080/#/Menu">
-                                Products
-                            </a>
-                            <i class="fa fa-chevron-right"></i>
-                        </span>
-                        <span v-model="routername">
-                            {{routername}}
-                            <i class="fa fa-chevron-right"></i>
-                        </span>
-                    </p>
+                    <Breadcrumbs />
                     <h2 class="mb-0 bread">Products</h2>
                 </div>
             </div>
@@ -33,35 +16,51 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
-                    <div class="row mb-4">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 d-flex" v-for="item in product">
-                            <div class="product ">
-                                <div class="img d-flex align-items-center justify-content-center"
-                                    :style="{backgroundImage: 'url(' + item.img + ')'}">
-                                    <div class="desc">
-                                        <p class="meta-prod d-flex">
-                                            <a class="d-flex align-items-center justify-content-center"><span
-                                                    v-on:click="Addcart(item.id)"
-                                                    class="flaticon-shopping-bag"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
-                                                    class="flaticon-heart"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
-                                                    class="flaticon-visibility"></span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="text text-center">
-                                    <span class="category">{{item.className}}</span>
-                                    <h2 id="product_name">{{item.name}}</h2>
-                                    <p class="mb-0"> <span class="price">${{item.price}}</span></p>
-                                </div>
+                    <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <b-pagination v-model="currentPage" pills :total-rows="totalRows" :per-page="perPage"
+                                    align="center" @change="pageChange">
+                                </b-pagination>
                             </div>
                         </div>
+                    </div>
+                    <div class="row mb-4">
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12 d-flex justify-content-between align-items-center">
+                            <h4 class="product-select">Select Types of Products</h4>
+                            <b-form-group id="input-group-2" label-for="input-2" class="w-50">
+                                <select class="form-control" id="exampleFormControlSelect1" v-model="selectedCatagory"
+                                    v-on:change="typechange($event)">
+                                    <option v-for="item in SortName" :value="item">{{item}}</option>
+                                </select>
+                            </b-form-group>
+                            <b-form-group id="input-group-2" label-for="input-2" class="w-50">
+                                <select class="form-control" id="exampleFormControlSelect1" v-model="selectedsort"
+                                    v-on:change="sortchange($event)">
+                                    <option v-for="item in Sortselect" :value="item">{{item}}</option>
+                                </select>
+                            </b-form-group>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 d-flex" v-for="item in showItems">
+                            <ProductCard :Product="item" />
 
+
+                        </div>
                     </div>
                     <div class="row mt-5">
+                        <div class="col text-center">
+                            <div class="block-27">
+                                <b-pagination v-model="currentPage" pills :total-rows="totalRows" :per-page="perPage"
+                                    align="center" @change="pageChange">
+                                </b-pagination>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-5">
                         <div class="col text-center">
                             <div class="block-27">
                                 <ul>
@@ -72,7 +71,7 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="col-md-3">
                     <div class="sidebar-box ftco-animate">
