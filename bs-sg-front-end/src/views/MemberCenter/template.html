@@ -1,24 +1,16 @@
 <div>
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/Member_BG.jpg');"
-    data-stellar-background-ratio="0.5">
-<div class="overlay"></div>
-<div class="container">
-   <div class="row no-gutters slider-text align-items-end justify-content-center">
-       <div class="col-md-9 ftco-animate mb-5 text-center">
-           <p class="breadcrumbs mb-0">
-               <span class="mr-2">
-                   <a href="index.html">
-                       Home <i class="fa fa-chevron-right"></i>
-                   </a>
-               </span> <span>
-                   My Account <i class="fa fa-chevron-right"></i>
-               </span>
-           </p>
-           <h2 class="mb-0 bread">My Account</h2>
-       </div>
-   </div>
-</div>
-</section>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/PMBG2.jpg');"
+        data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <Breadcrumbs />
+                    <h2 class="mb-0 bread">My Account</h2>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <section class="ftco-section">
 <div class="container">
@@ -54,7 +46,7 @@
                                            <span class="pr-3 pb-2 Modify">Modify member information</span>
                                        <div class="">
                                            <div class="onoffswitch">
-                                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox " id="myonoffswitch" tabindex="0" v-bind:checked="Checkselected" @click="change">
+                                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox " id="myonoffswitch" tabindex="0" v-bind:checked="Checkselected" @click="change" >
                                         <label class="onoffswitch-label" for="myonoffswitch" data-toggle="tooltip" data-placement="bottom"
                                         title="After modification, press save"></label>
                                     </div>
@@ -64,7 +56,7 @@
                                <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="Name">Name <span class="need">*</span></label>
-                                    <input type="text" class="form-control input py-0" ref="name" v-model="inputData.Name" v-bind:class="{'is-invalid':checkData.NameError}" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]"name="Name">
+                                    <input type="text" class="form-control input py-0" ref="name" v-model="inputData.Name" v-bind:class="{'is-invalid':checkData.NameError}" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]"name="Name" >
                                     <div class="invalid-feedback">{{checkData.NameErrorMsg}}</div>
                                 </div>
                             </div>

@@ -5,7 +5,9 @@ import Home from '../views/Home/index.vue'
 import Cart from '../views/Cart/index.vue'
 import ProductMenu from '../views/ProductMenu/index.vue'
 import Catagory  from '../views/Catagory/index.vue'
-import MemberCenter from '../views/MemberCenter.vue'
+import MemberCenter from '../views/MemberCenter/index.vue'
+import Register from '../views/Register/index.vue'
+// import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
 
@@ -54,9 +56,15 @@ const routes = [{
             import ( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
     },
     {
-                Path:'/MemberCenter',
+        path:'/MemberCenter',
         name:'MemberCenter',
         component:MemberCenter
+        
+    },
+    {
+        path:'/Register',
+        name:'Register',
+        component:Register
     }
 ]
 
