@@ -3,6 +3,8 @@
 <script>
 import axios from "axios";
 import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
+
+
 var UserId = "MB001";
 localStorage.setItem('Authorization','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNQjAyNyAgICAgIiwianRpIjoiNWFlYzU0YzEtMjE1Mi00YWMyLTkyYzMtZTc4ZGMwM2IzZTYzIiwicm9sZXMiOiJVc2VycyIsIm5iZiI6MTYwMTEzNDAzMCwiZXhwIjoxNjAxMTM1ODMwLCJpYXQiOjE2MDExMzQwMzAsImlzcyI6IlN1cnZpdmFsR2FtZUp3dCJ9.y2Q0S_snIl-SOlghkAxj_DevRW3qb8fsqXl_1iYHwqQ')
 var token = localStorage.getItem('Authorization')
@@ -85,16 +87,12 @@ export default {
       filterOn: [],
     };
   },
-  created() {
-    
-  },
-  mounted: function () {
+  create() {
     axios({
       url: `${this.$store.state.domain}Member/MemberCenter/${UserId}`,
       method: "Get",
       headers: {'Authorization': `Bearer ${token}`}
     }).then((response) => {
-      response = response.data
       var member = response.data.member;
       console.log(response.data);
       var profile = {
@@ -155,7 +153,8 @@ export default {
       this.inputData = profile;
       this.wishlist = wishlist;
     })
-
+  },
+  mounted: function () {
     this.totalRows = this.history.length;
   },
     methods: {
