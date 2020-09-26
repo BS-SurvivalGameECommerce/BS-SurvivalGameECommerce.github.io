@@ -125,4 +125,4 @@ export default {
 };
 </script>
 <template src="./template.html"></template>
-<style src="./style.css" scoped></style>
+<style src="./style.css"></style>
