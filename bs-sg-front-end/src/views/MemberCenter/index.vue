@@ -3,8 +3,6 @@
 <script>
 import axios from "axios";
 import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
-
-
 var UserId = "MB001";
 
 export default {
@@ -87,10 +85,14 @@ export default {
     };
   },
   created() {
+    
+  },
+  mounted: function () {
     axios({
       url: `${this.$store.state.domain}Member/MemberCenter/${UserId}`,
       method: "Get",
     }).then((response) => {
+      response = response.data
       var member = response.data.member;
       console.log(response.data);
       var profile = {
@@ -151,8 +153,6 @@ export default {
       this.inputData = profile;
       this.wishlist = wishlist;
     })
-  },
-  mounted: function () {
 
     this.totalRows = this.history.length;
   },
@@ -179,6 +179,7 @@ export default {
         this.totalRows = filteredItems.length;
         this.currentPage = 1;
       },
+
     },
 };
 </script>
