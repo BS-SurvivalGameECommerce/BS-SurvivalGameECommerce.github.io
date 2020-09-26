@@ -3,14 +3,13 @@ import axios from "axios";
 import ProductCard from "../../components/ProductCard/index.vue";
 import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
 
-var domain = "https://localhost:5001/";
-var api = domain + "Product/Menu";
+// var domain = "https://localhost:5001/";
+// var api = domain + "Product/Menu";
 var product = [];
-// var AttrListName = [];
 var AttrListValues = [];
-// var ClassName = [];
+
 var AttrList = [];
-// var valueul;
+
 var routername = "";
 var num;
 var endnum;
@@ -22,6 +21,7 @@ export default {
   },
   data() {
     return {
+      api: this.$store.state.domain + "Product/Menu",
       routername: "",
       product: product,
       ClassName: [],
@@ -33,8 +33,10 @@ export default {
       perPage: 10,
       currentPage: 1,
       totalRows: "",
-      selectedCatagory: "",
-      SortName: ["name", "price", "Newest"],
+      selectedCatagory: "name",
+      SortName: [
+        "name" ,"price" ,"Newest" ,
+      ],
       selectedsort: "",
       Sortselect: ["Asc", "Desc"],
     };
@@ -48,7 +50,7 @@ export default {
       this._data.routername = to.params.name;
       routername = to.params.name;
       axios({
-        url: api,
+        url: this.api,
         method: "Get",
       }).then((res) => {
         let response = res.data;
@@ -86,7 +88,7 @@ export default {
     this._data.routername = this.$route.params.name;
     routername = this.$route.params.name;
     axios({
-      url: api,
+      url: this.api,
       method: "Get",
     }).then((res) => {
       // ClassName=[]
@@ -193,6 +195,7 @@ export default {
         item.style.display = "none";
       });
       this._data.showItems = product.filter((item) => item.className == x);
+      this._data.totalRows = this._data.showItems.length;
     },
     reset: function () {
       var cul = document.getElementsByClassName("value-ul");
@@ -201,6 +204,7 @@ export default {
         item.style.display = "none";
       });
       this._data.showItems = product;
+      this._data.totalRows = this._data.showItems.length;
     },
     display: function (x) {
       var cul = document.getElementsByClassName("value-ul");
@@ -242,12 +246,16 @@ export default {
       this._data.showItems = product.filter(
         (item) => item.attrlist[endnum].value == x
       );
+      this._data.totalRows = this._data.showItems.length;
     },
   },
   updated: function () {
     this.InitAnime();
   },
 };
+// console.log(document.getElementById("option"));
+// document.getElementById("option").selected=true;
+// op.selected=true;
 </script>
 <template src="./template.html"></template>
-<style src="./style.css" scoped></style>
+<style src="./style.scss" lang="scss"></style>

@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home/index.vue'
 import Cart from '../views/Cart/index.vue'
 import ProductMenu from '../views/ProductMenu/index.vue'
-import Catagory  from '../views/Catagory/index.vue'
+import Catagory from '../views/Catagory/index.vue'
 import MemberCenter from '../views/MemberCenter/index.vue'
 import Register from '../views/Register/index.vue'
 // import { component } from 'vue/types/umd'
@@ -33,7 +33,7 @@ const routes = [{
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/About/index.vue')
+            import( /* webpackChunkName: "about" */ '../views/About/index.vue')
     },
     {
         path: '/Contact',
@@ -42,7 +42,7 @@ const routes = [{
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import ( /* webpackChunkName: "Contact" */ '../views/Contact/index.vue')
+            import( /* webpackChunkName: "Contact" */ '../views/Contact/index.vue')
     },
     {
         path: '/Cart',
@@ -53,18 +53,18 @@ const routes = [{
         path: '/SignUp',
         name: 'SignUp',
         component: () =>
-            import ( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
+            import( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
     },
     {
-        path:'/MemberCenter',
-        name:'MemberCenter',
-        component:MemberCenter
-        
+        path: '/MemberCenter',
+        name: 'MemberCenter',
+        component: MemberCenter
+
     },
     {
-        path:'/Register',
-        name:'Register',
-        component:Register
+        path: '/Register',
+        name: 'Register',
+        component: Register
     }
 ]
 
