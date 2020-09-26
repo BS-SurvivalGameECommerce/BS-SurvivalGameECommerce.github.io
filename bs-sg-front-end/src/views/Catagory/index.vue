@@ -33,11 +33,11 @@ export default {
       perPage: 10,
       currentPage: 1,
       totalRows: "",
-      selectedCatagory: "name",
+      selectedCatagory: "Newest",
       SortName: [
         "name" ,"price" ,"Newest" ,
       ],
-      selectedsort: "",
+      selectedsort: "Asc",
       Sortselect: ["Asc", "Desc"],
     };
   },
@@ -258,4 +258,4 @@ export default {
 // op.selected=true;
 </script>
 <template src="./template.html"></template>
-<style src="./style.scss" lang="scss"></style>
+<style src="./style.scss" lang="scss" scoped ></style>

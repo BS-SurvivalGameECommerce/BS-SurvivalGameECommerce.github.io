@@ -22,9 +22,9 @@ export default {
       perPage: 10,
       currentPage: 1,
       totalRows: 50,
-      selectedCatagory: "name",
+      selectedCatagory: "Newest",
       SortName: ["name", "price", "Newest"],
-      selectedsort: "",
+      selectedsort: "Asc",
       Sortselect: ["Asc", "Desc"],
     };
   },
@@ -71,7 +71,6 @@ export default {
           break;
       }
       this.paginate(this.perPage, 0);
-
     },
     Desc(x) {
       switch (x) {
@@ -95,16 +94,19 @@ export default {
           break;
       }
       this.paginate(this.perPage, 0);
-
     },
     sortchange(event) {
-      return event.target.value == "Asc"? this.Asc(this.selectedCatagory): this.Desc(this.selectedCatagory);
+      return event.target.value == "Asc"
+        ? this.Asc(this.selectedCatagory)
+        : this.Desc(this.selectedCatagory);
     },
     typechange(event) {
       if (this.selectedsort == "") {
         return;
       }
-      return this.selectedsort == "Asc"? this.Asc(event.target.value): this.Desc(event.target.value);
+      return this.selectedsort == "Asc"
+        ? this.Asc(event.target.value)
+        : this.Desc(event.target.value);
     },
     paginate(page_size, page_number) {
       this.showItems = this.product.slice(
@@ -125,4 +127,35 @@ export default {
 };
 </script>
 <template src="./template.html"></template>
-<style src="./style.scss" lang="scss" ></style>
+<style src="./style.scss" lang="scss" scoped></style>
+<style lang="scss" >
+.tt-pagination {
+  .page-item.active .page-link {
+    background-color: #5a4d4c !important;
+    color: #fff !important;
+    border: 1px solid transparent !important;
+  }
+
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #5a4d4c;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    width: 40px;
+    height: 40px;
+  }
+  .page-link:focus {
+    box-shadow: none;
+  }
+  .page-link:focus {
+    box-shadow: none;
+  }
+  .product-select {
+    margin: auto 0 auto auto;
+  }
+}
+</style>
