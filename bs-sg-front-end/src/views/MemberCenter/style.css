@@ -1,0 +1,92 @@
+
+.tab-content .tab-pane input {
+    max-width: 100%;
+}
+
+.Modify{
+    font-size: 18px;
+    font-family: sans-serif;
+    color: black;
+    display: inline-block;
+}
+.onoffswitch {
+    position: relative; width: 67px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch-label {
+    
+    display: block; overflow: hidden; cursor: pointer;
+    height: 31px; padding: 0; line-height: 31px;
+    border: 2px solid #E3E3E3; border-radius: 31px;
+    background-color: #FFFFFF;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 31px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 34px;
+    border: 2px solid #E3E3E3; border-radius: 31px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #545754;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #545754;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px; 
+}
+.BirthdayText p {
+    font-size: 10px;
+    color: red;
+    position: relative;
+    margin-top: 6px;
+}
+.need{
+    color: red;
+}
+
+.HistoryImg{
+    width:100%
+}
+.billing-form .form-control{
+    font-weight: 500;
+    font-size: 18px;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #000!important;
+
+}
+.billing-form label {
+    font-size: 24px;
+    font-weight: 500;
+}
+.table{
+    min-width: 700px !important;
+}
+.table thead th {
+    font-size: 18px;
+}
+
+.nav-pills .nav-link:last-child:after {
+    position: absolute;
+    /* bottom: -10px; */
+    left: 0;
+    right: 0;
+    width: 0;
+    content: '';
+    height: 0;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: transparent transparent transparent transparent;
+    opacity: 0;
+}

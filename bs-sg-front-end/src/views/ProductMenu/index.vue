@@ -22,7 +22,7 @@ export default {
       perPage: 10,
       currentPage: 1,
       totalRows: 50,
-      selectedCatagory: "",
+      selectedCatagory: "name",
       SortName: ["name", "price", "Newest"],
       selectedsort: "",
       Sortselect: ["Asc", "Desc"],
@@ -125,4 +125,4 @@ export default {
 };
 </script>
 <template src="./template.html"></template>
-<style src="./style.css"></style>
+<style src="./style.scss" lang="scss" ></style>

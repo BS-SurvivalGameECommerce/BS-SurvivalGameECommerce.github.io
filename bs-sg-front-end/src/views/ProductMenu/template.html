@@ -32,20 +32,16 @@
 
                     </div>
                     <div class="row mb-4">
-                        <div class="col-md-12 d-flex justify-content-between align-items-center">
-                            <h4 class="product-select">Select Types of Products</h4>
-                            <b-form-group id="input-group-2" label-for="input-2" class="w-50">
-                                <select class="form-control" id="exampleFormControlSelect1" v-model="selectedCatagory"
-                                    v-on:change="typechange($event)">
-                                    <option v-for="item in SortName" :value="item">{{item}}</option>
-                                </select>
-                            </b-form-group>
-                            <b-form-group id="input-group-2" label-for="input-2" class="w-50">
-                                <select class="form-control" id="exampleFormControlSelect1" v-model="selectedsort"
-                                    v-on:change="sortchange($event)">
-                                    <option v-for="item in Sortselect" :value="item">{{item}}</option>
-                                </select>
-                            </b-form-group>
+                        <div class="col-md-12 d-flex  align-items-center">
+                            <h4 class="product-select">Order By</h4>
+                            <select class=" form-control" id="exampleFormControlSelect1" v-model="selectedCatagory"
+                                v-on:change="typechange($event)">
+                                <option v-for="item in SortName" :value="item">{{item}}</option>
+                            </select>
+                            <select class="form-control" id="exampleFormControlSelect1" v-model="selectedsort"
+                                v-on:change="sortchange($event)">
+                                <option v-for="item in Sortselect" :value="item">{{item}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">
