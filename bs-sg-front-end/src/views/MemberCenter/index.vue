@@ -86,7 +86,7 @@ export default {
       filterOn: [],
     };
   },
-  create() {
+  created() {
     axios({
       url: `${this.$store.state.domain}Member/MemberCenter/${UserId}`,
       method: "Get",
@@ -153,6 +153,7 @@ export default {
     })
   },
   mounted: function () {
+
     this.totalRows = this.history.length;
   },
     methods: {
