@@ -300,21 +300,14 @@ export default {
       this.currentPage = 1;
     },
     sendNewProfile: function () {
-      axios({
-        url: `${this.$store.state.domain}Member/PostMember`,
-        method: "post",
-        headers: { Authorization: `Bearer ${token}` },
-      }).then((response) => {
-        response = response.data;
-        var newprofile = {
-        Name: response.data.name,
-        Email: response.data.mail,
-        Birthday: response.data.birthday.split("T")[0],
-        Phone: response.data.phone,
-        Postcode: response.data.postCode,
-        Address: response.data.address,
-      };
-      });
+      // axios({
+      //   url: `${this.$store.state.domain}Member/PostMember`,
+      //   method: "post",
+      //   // headers: { Authorization: `Bearer ${token}` },
+      // }).then((response) => {
+      //   // response = response.data;
+      //   // newprofile
+      // });
     },
   },
 };
