@@ -7,6 +7,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        profile: {
+            id: '',
+            mail: ''
+        },
         domain: 'https://localhost:5001/',
         cartItems: []
     },
@@ -33,6 +37,10 @@ export default new Vuex.Store({
                 return;
             }
             localStorage.setItem('cart', JSON.stringify(state.cartItems));
+        },
+        setProfile(state, profile) {
+            state.profile.id = profile.id;
+            state.profile.mail = profile.mail;
         }
     },
     actions: {
