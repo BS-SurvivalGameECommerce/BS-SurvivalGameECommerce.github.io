@@ -9,7 +9,7 @@
                     <a href="#" class="d-flex align-items-center justify-content-center">
                         <span class="flaticon-heart"></span>
                     </a>
-                    <a href="#" class="d-flex align-items-center justify-content-center">
+                    <a @click="goToDetail(Product.pid)" class="d-flex align-items-center justify-content-center">
                         <span class="flaticon-visibility"></span>
                     </a>
                 </p>
@@ -40,6 +40,10 @@ export default {
     addToCart: function (pid) {
       this.$store.dispatch("addToCart", { pid: pid, quantity: 1 });
     },
+    goToDetail: function(pid){
+        this.$router.push({ path: `/ProductDetail/${pid}` });
+        // this.$route.path = ;
+    }
   },
 };
 </script>

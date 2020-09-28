@@ -17,7 +17,6 @@ export default {
 
   },
   updated: function(){
-    console.log('app updated');
     this.InitAnime();
 
   },

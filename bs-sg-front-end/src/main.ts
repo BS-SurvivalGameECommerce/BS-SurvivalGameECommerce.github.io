@@ -17,7 +17,6 @@ import store from './store'
 // };
 // Vue.mixin(cartObj);
 Vue.prototype.InitAnime = function(){
-    console.log('InitAnime');
     carousel();
     counter();
     contentWayPoint();
