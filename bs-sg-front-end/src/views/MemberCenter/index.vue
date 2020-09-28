@@ -306,8 +306,7 @@ export default {
         headers: { Authorization: `Bearer ${token}` },
       }).then((response) => {
         response = response.data;
-        newProfile = response.data
-        var profile = {
+        var newprofile = {
         Name: response.data.name,
         Email: response.data.mail,
         Birthday: response.data.birthday.split("T")[0],
