@@ -17,10 +17,15 @@
 <script>
 export default {
   name: "Breadcrumbs",
+  data(){
+      return {
+          currentPath: ""
+      }
+  },
   computed:{
       breadcrums: function(){
-          let currentPath = this.$router.history.current.fullPath;
-          console.log('breadcrums: ' ,currentPath);
+          let currentPath = this.$route.path;
+          console.log('breadcrums router Change: ' ,this.$route);
           let result = ['Home'].concat(currentPath.split('/').filter(x => x)).map((x ,i ,a) => {
               return {
                   name: x ,
@@ -31,7 +36,7 @@ export default {
           return result;
       }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .breadcrumbs{

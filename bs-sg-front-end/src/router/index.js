@@ -7,6 +7,7 @@ import ProductMenu from '../views/ProductMenu/index.vue'
 import Catagory from '../views/Catagory/index.vue'
 import MemberCenter from '../views/MemberCenter/index.vue'
 import Register from '../views/Register/index.vue'
+import Login from '../views/Login/index.vue'
 // import { component } from 'vue/types/umd'
 
 Vue.use(VueRouter)
@@ -33,7 +34,7 @@ const routes = [{
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import( /* webpackChunkName: "about" */ '../views/About/index.vue')
+            import ( /* webpackChunkName: "about" */ '../views/About/index.vue')
     },
     {
         path: '/Contact',
@@ -42,7 +43,7 @@ const routes = [{
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () =>
-            import( /* webpackChunkName: "Contact" */ '../views/Contact/index.vue')
+            import ( /* webpackChunkName: "Contact" */ '../views/Contact/index.vue')
     },
     {
         path: '/Cart',
@@ -53,7 +54,7 @@ const routes = [{
         path: '/SignUp',
         name: 'SignUp',
         component: () =>
-            import( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
+            import ( /* webpackChunkName: "SignUp" */ '../views/SignUp/index.vue')
     },
     {
         path: '/MemberCenter',
@@ -65,6 +66,11 @@ const routes = [{
         path: '/Register',
         name: 'Register',
         component: Register
+    },
+    {
+        path: '/Login',
+        name: 'Login',
+        component: Login
     }
 ]
 
