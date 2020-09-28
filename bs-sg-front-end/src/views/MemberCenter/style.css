@@ -70,9 +70,9 @@
     font-weight: 500;
 }
 .table{
-    min-width: 700px !important;
+    min-width: 800px !important;
 }
-.table thead th {
+.table thead {
     font-size: 18px;
 }
 
