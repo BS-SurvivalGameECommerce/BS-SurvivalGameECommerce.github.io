@@ -7,7 +7,7 @@ import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
 var UserId = "MB001";
 localStorage.setItem(
   "Authorization",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNQjAyNyAgICAgIiwianRpIjoiNmRjYTQ2MDktZTYzMy00MzU1LTk5OWUtNDRhNmZiOTIwZjJlIiwicm9sZXMiOiJVc2VycyIsIm5iZiI6MTYwMTE0MjAwNCwiZXhwIjoxNjAxMTQzODA0LCJpYXQiOjE2MDExNDIwMDQsImlzcyI6IlN1cnZpdmFsR2FtZUp3dCJ9.pgIoZh8ivBmh29I_mK_LfQjQOzUo721C0AP1_18_CZk"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNQjAyNyAgICAgIiwianRpIjoiNzFmNDkwODgtOTkwMS00NmZhLWI5NWUtZGUwODEyZjIzNTU1Iiwicm9sZXMiOiJVc2VycyIsIm5iZiI6MTYwMTMwNDcwMSwiZXhwIjoxNjAxMzA4MzAxLCJpYXQiOjE2MDEzMDQ3MDEsImlzcyI6IlN1cnZpdmFsR2FtZUp3dCJ9.2yuf3IVpsNBuRE4DFevegXJ10MAGmqc5MHQwkEIngOY"
 );
 var token = localStorage.getItem("Authorization");
 export default {
@@ -194,7 +194,7 @@ export default {
     "inputData.Address": {
       immediate: true,
       handler: function () {
-        if (this.inputData.Address.length < 10) {
+        if ( this.inputData.Address != undefined && this.inputData.Address.length < 10) {
           this.checkData.AddressError = true;
           this.checkData.AddressErrorMsg =
             "Please enter the complete address of more than 10 words";
