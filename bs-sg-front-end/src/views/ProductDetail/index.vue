@@ -44,6 +44,13 @@ export default {
         },
         onSlideEnd() {
             this.sliding = false
+        },
+        addToCart(){
+            this.$store.dispatch("addToCart", { pid: this.product.id, quantity: this.product.amount });
+        },
+        addToCartAndGoTo(){
+            this.$store.dispatch("addToCart", { pid: this.product.id, quantity: this.product.amount });
+            this.$router.push({ path: `/Cart` });
         }
     },
     watch: {

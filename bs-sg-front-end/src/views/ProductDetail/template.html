@@ -58,7 +58,10 @@
                             <p style="color: #000;">{{ product.invetoryQuantity }} piece available</p>
                         </div>
                     </div>
-                    <p><a href="#" class="btn btn-primary py-3 px-5 mr-2" id="AddCartBtn">Add to Cart</a><a href="ShoppingCart" class="btn btn-primary py-3 px-5">Buy now</a></p>
+                    <p>
+                        <a class="btn btn-primary py-3 px-5 mr-2" id="AddCartBtn" @click="addToCart">Add to Cart</a>
+                        <a class="btn btn-primary py-3 px-5" @click="addToCartAndGoTo">Buy now</a>
+                    </p>
                 </div>
             </div>
 

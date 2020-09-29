@@ -45,6 +45,7 @@ export default new Vuex.Store({
     },
     actions: {
         addToCart: function(context, cartItem) {
+            cartItem.pid = cartItem.pid.trim();
             if (context.state.cartItems.findIndex(x => x.pid == cartItem.pid) == -1) {
                 let IDList = [];
                 IDList.push(cartItem.pid);
