@@ -50,8 +50,8 @@
                         <div class="col-md-6" id="productAmount">
                             <b-form-spinbutton v-model="product.amount" min="1" :max="product.invetoryQuantity"></b-form-spinbutton>
                         </div>
-                        <select name="select" id="ProductColor" style="font-size:14px;width:120px;height:40px" v-for="item in product.color">
-                            <option>{{ item.color }}</option>
+                        <select name="select" id="ProductColor" style="font-size:14px;width:120px;height:40px">
+                            <option v-for="item in product.color">{{ item.color }}</option>
                         </select>
                         <div class="w-100"></div>
                         <div class="col-md-12">
