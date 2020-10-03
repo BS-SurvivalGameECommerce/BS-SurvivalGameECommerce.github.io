@@ -21,6 +21,9 @@ Vue.prototype.InitAnime = function(){
     counter();
     contentWayPoint();
 }
+Vue.prototype.getToken = function(){
+    return localStorage.getItem('LoginToken');
+}
 
 Vue.use(BootstrapVue)
 // Vue.use(plugin)
