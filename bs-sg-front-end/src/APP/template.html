@@ -28,12 +28,20 @@
                         </p>
                     </div>
                     <div class="reg" id="memberArea">
-                        <p class="mb-0">
+                        <p class="mb-0" v-if="this.$store.state.profile.mail">
+                            <router-link class="mr-2" to="/MemberCenter">
+                                {{this.$store.state.profile.mail}}
+                            </router-link>
+                        </p>
+                        <p class="mb-0" v-else>
                             <router-link class="mr-2" to="/SignUp">
                                 Sign Up
                             </router-link>
+                            <router-link class="mr-2" to="/Login">
+                                Log In
+                            </router-link>
                             <!-- <a href="#" class="mr-2">Sign Up</a> -->
-                            <a href="#" class="Log_In">Log In</a>
+                            <!-- <a href="#" class="Log_In">Log In</a> -->
                         </p>
                     </div>
                 </div>
