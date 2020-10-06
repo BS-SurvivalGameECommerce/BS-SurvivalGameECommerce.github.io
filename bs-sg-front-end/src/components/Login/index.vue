@@ -82,6 +82,7 @@ export default {
                 .post(`${this.$store.state.domain}Member/Login`, account)
                 .then(res => {
                     console.log(res.data);
+                    localStorage.setItem('LoginToken', res.data.data.token);
                     this.$store.commit('setProfile',res.data.data);
                 });
         }

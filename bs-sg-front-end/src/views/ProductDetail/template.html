@@ -1,0 +1,116 @@
+<div>
+    <section class="hero-wrap hero-wrap-2" style="background-image: url(../../Assets/images//PD_BG2.jpg);" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate mb-5 text-center">
+                    <Breadcrumbs :Alias="routerAlias" />
+                    <h2 class="mb-0 bread">ProductDetails</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section" v-if="product">
+        <div class="container" id="pinfo">
+            <div class="row">
+                <b-carousel id="carousel-1" v-model="slide" class="col-lg-6 p-0" img-width="480" img-height="590" controls background="#ababab" style="text-shadow: 1px 1px 2px #333;" @sliding-start="onSlideStart" @sliding-end="onSlideEnd">
+
+
+                    <b-carousel-slide v-for="img in product.imgList" :img-src="img"></b-carousel-slide>
+
+                </b-carousel>
+
+                <div class="col-lg-6 product-details pl-md-5 ftco-animate">
+                    <h3>{{ product.name }}</h3>
+                    <div class="rating d-flex">
+                        <p class="text-left mr-4">
+                            <a href="#" class="mr-2" id="ProductID">{{ product.id }}</a>
+                        </p>
+
+                    </div>
+                    <p class="price"><span>${{ product.price }}</span></p>
+                    <p>{{ product.depiction }}</p>
+
+                    <div class="row mt-4">
+                        <!-- <div class="input-group col-md-6 d-flex mb-3">
+                            <span class="input-group-btn mr-2">
+                                <button type="button" class="quantity-left-minus btn" data-type="minus" data-field="">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </span>
+                            <input type="text" id="quantity" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
+                            <span class="input-group-btn ml-2">
+                                <button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </span>
+                            
+                        </div> -->
+                        <div class="col-md-6" id="productAmount">
+                            <b-form-spinbutton v-model="product.amount" min="1" :max="product.invetoryQuantity"></b-form-spinbutton>
+                        </div>
+                        <select name="select" id="ProductColor" style="font-size:14px;width:120px;height:40px">
+                            <option v-for="item in product.color">{{ item.color }}</option>
+                        </select>
+                        <div class="w-100"></div>
+                        <div class="col-md-12">
+                            <p style="color: #000;">{{ product.invetoryQuantity }} piece available</p>
+                        </div>
+                    </div>
+                    <p>
+                        <a class="btn btn-primary py-3 px-5 mr-2" id="AddCartBtn" @click="addToCart">Add to Cart</a>
+                        <a class="btn btn-primary py-3 px-5" @click="addToCartAndGoTo">Buy now</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-12 nav-link-wrap">
+                    <div class="nav nav-pills d-flex text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link ftco-animate active mr-lg-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Description</a>
+                        <a class="nav-link ftco-animate" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false">Reviews</a>
+                    </div>
+                </div>
+                <div class="col-md-12 tab-wrap">
+                    <div class="tab-content bg-light" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="day-1-tab">
+                            <div class="p-4">
+                                <h3 class="mb-4">
+                                    manufacturer: {{ product.manufacturerName }}
+                                </h3>
+                                <p>
+                                    <ul v-for="attr in product.attrList">
+                                        <li>{{ attr.name }} : {{ attr.value }}</li>
+                                    </ul>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade show" id="v-pills-2" role="tabpanel" aria-labelledby="day-2-tab">
+                            <div class="p-4">
+                                <div></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" id="des" v-if="RelatedProducts">
+            <div class="row mt-5">
+                <div class="col-md-4 col-lg-3 d-flex" v-for="item in RelatedProducts">
+                    <!-- <img class="d-block w-100" v-bind:src="item.img" class="d-block w-50" alt="">
+                    <h5 class="mb-4">
+                        {{ item.name }}
+                    </h5>
+                    <p class="mb-4">
+                        $ : {{ item.price }}
+                    </p> -->
+                    <ProductCard :Product="item" />
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
