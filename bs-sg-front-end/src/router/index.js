@@ -6,7 +6,6 @@ import Cart from '../views/Cart/index.vue'
 import ProductMenu from '../views/ProductMenu/index.vue'
 import Catagory from '../views/Catagory/index.vue'
 import MemberCenter from '../views/MemberCenter/index.vue'
-import Register from '../views/Register/index.vue'
 import Login from '../views/Login/index.vue'
 // import { component } from 'vue/types/umd'
 
@@ -61,11 +60,6 @@ const routes = [{
         name: 'MemberCenter',
         component: MemberCenter
 
-    },
-    {
-        path: '/Register',
-        name: 'Register',
-        component: Register
     },
     {
         path: '/Login',

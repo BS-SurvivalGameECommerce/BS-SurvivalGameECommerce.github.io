@@ -316,7 +316,7 @@ export default {
   },
   addcart:function(pid){
     console.log(pid)
-    this.$store.commit('removeFromCart' ,pid);
+    this.$store.commit('addToCart' ,pid);
   },
     sendNewProfile: function () {
       var input = document.getElementsByClassName("input");
