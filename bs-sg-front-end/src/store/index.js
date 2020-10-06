@@ -11,7 +11,8 @@ export default new Vuex.Store({
             id: '',
             mail: ''
         },
-        domain: 'https://localhost:5001/',
+        // domain: 'https://localhost:5001/',
+        domain: 'https://sgwebapi-core.azurewebsites.net/',
         cartItems: []
     },
     mutations: {
