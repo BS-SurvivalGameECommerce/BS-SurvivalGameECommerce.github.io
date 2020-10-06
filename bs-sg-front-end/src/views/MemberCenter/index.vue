@@ -4,12 +4,12 @@
 import axios from "axios";
 import Breadcrumbs from "../../components/Breadcrumbs/index.vue";
 
-var UserId = "MB001";
+let UserId = "MB001";
 localStorage.setItem(
   "Authorization",
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJNQjAyNyAgICAgIiwianRpIjoiNzFmNDkwODgtOTkwMS00NmZhLWI5NWUtZGUwODEyZjIzNTU1Iiwicm9sZXMiOiJVc2VycyIsIm5iZiI6MTYwMTMwNDcwMSwiZXhwIjoxNjAxMzA4MzAxLCJpYXQiOjE2MDEzMDQ3MDEsImlzcyI6IlN1cnZpdmFsR2FtZUp3dCJ9.2yuf3IVpsNBuRE4DFevegXJ10MAGmqc5MHQwkEIngOY"
 );
-var token = localStorage.getItem("Authorization");
+let token = localStorage.getItem("Authorization");
 export default {
   name: "MemberCenter",
   components: {
@@ -23,8 +23,8 @@ export default {
       checkData: {
         NameError: false,
         NameErrorMsg: "",
-        EmailError: false,
-        EmailhErrorMsg: "",
+        MailError: false,
+        MailhErrorMsg: "",
         PasswordError: false,
         PasswordErrorMsg: "",
         CheckPasswordError: false,
@@ -37,7 +37,7 @@ export default {
         AddressErrorMsg: "",
       },
       history: [],
-      wishlist: "",
+      wishlist: [],
       inputstatus: {
         button: true,
         background: "",
@@ -90,7 +90,7 @@ export default {
     };
   },
   watch: {
-    Checkselected: {
+    'Checkselected': {
       immediate: true,
       handler: function () {
         if (this.Checkselected == false) {
@@ -120,16 +120,16 @@ export default {
         }
       },
     },
-    "inputData.Email": {
+    "inputData.Mail": {
       immediate: true,
       handler: function () {
-        let EmailReg = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
-        if (!EmailReg.test(this.inputData.Email)) {
-          this.checkData.EmailError = true;
-          this.checkData.EmailErrorMsg = "Please enter the complete email.";
+        let MailReg = /^(([.](?=[^.]|^))|[\w_%{|}#$~`+!?-])+@(?:[\w-]+\.)+[a-zA-Z.]{2,63}$/;
+        if (!MailReg.test(this.inputData.Mail)) {
+          this.checkData.MailError = true;
+          this.checkData.MailErrorMsg = "Please enter the complete email.";
         } else {
-          this.checkData.EmailError = false;
-          this.checkData.EmailErrorMsg = "";
+          this.checkData.MailError = false;
+          this.checkData.MailErrorMsg = "";
         }
       },
     },
@@ -194,7 +194,10 @@ export default {
     "inputData.Address": {
       immediate: true,
       handler: function () {
-        if ( this.inputData.Address != undefined && this.inputData.Address.length < 10) {
+        if (
+          this.inputData.Address != undefined &&
+          this.inputData.Address.length < 10
+        ) {
           this.checkData.AddressError = true;
           this.checkData.AddressErrorMsg =
             "Please enter the complete address of more than 10 words";
@@ -216,7 +219,7 @@ export default {
       console.log(response.data);
       var profile = {
         Name: member.name,
-        Email: member.mail,
+        Mail: member.mail,
         Birthday: member.birthday.split("T")[0],
         Phone: member.phone,
         Postcode: member.postCode,
@@ -299,17 +302,64 @@ export default {
       this.totalRows = filteredItems.length;
       this.currentPage = 1;
     },
-    sendNewProfile: function () {
-      // axios({
-      //   url: `${this.$store.state.domain}Member/PostMember`,
-      //   method: "post",
-      //   // headers: { Authorization: `Bearer ${token}` },
-      // }).then((response) => {
-      //   // response = response.data;
-      //   // newprofile
-      // });
-    },
+    removeWish:function(wid){
+      var index = this.wishlist.findIndex(x => x.wid == wid);
+      console.log(index);
+      this.wishlist.splice(index,1);
+      console.log(this.wishlist)
+       axios
+          .post(`${this.$store.state.domain}Member/RemoveWish/${wid}`)
+          .then((res) =>{
+            res = res.data;
+            console.log(res);
+          })
   },
+  addcart:function(pid){
+    console.log(pid)
+    this.$store.commit('removeFromCart' ,pid);
+  },
+    sendNewProfile: function () {
+      var input = document.getElementsByClassName("input");
+      var isnull;
+      for (var i = 0; i < input.length; i++) {
+        if (input[1].classList.contains("is-invalid") == false) {
+          isnull = false;
+        } else {
+          isnull = true;
+        }
+      }
+      if (isnull == false) {
+        let json = {
+          Id: UserId,
+          Name: this.inputData.Name,
+          Mail: this.inputData.Mail,
+          Phone: this.inputData.Phone,
+          Postcode: this.inputData.Postcode,
+          Address: this.inputData.Address,
+        };
+        console.log(json);
+        axios
+          .post(`${this.$store.state.domain}Member/PostMember`, json)
+          .then((res) => {
+            res = res.data;
+            console.log(res);
+
+            let newprofile = {
+              Name: res.data.name,
+              Mail: res.data.mail,
+              Birthday: res.data.birthday.split('T')[0],
+              Phone: res.data.phone,
+              Postcode: res.data.postCode,
+              Address: res.data.address,
+            };
+            this.inputData = newprofile;
+            this.Checkselected = false;
+          });
+      }
+    },
+    
+  },
+ 
 };
 </script>
 <template src="./template.html"></template>

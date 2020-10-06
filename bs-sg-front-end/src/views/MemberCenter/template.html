@@ -64,9 +64,9 @@
     
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="EmailAddress">Email Address <span class="need">*</span></label>
-                                    <input type="email" class="form-control input" ref="mail"  v-model="inputData.Email" v-bind:class="{'is-invalid':checkData.EmailError}" name="Email" placeholder="ex:a123@gmail.com" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
-                                    <div class="invalid-feedback">{{checkData.EmailErrorMsg}}</div>
+                                    <label for="MailAddress">Mail Address <span class="need">*</span></label>
+                                    <input type="email" class="form-control input" ref="mail"  v-model="inputData.Mail" v-bind:class="{'is-invalid':checkData.MailError}" name="Mail" placeholder="ex:a123@gmail.com" :readonly="Checkselected ? false : 'readonly'" :style="[{'background-color':inputstatus.background},{'color':inputstatus.color}]">
+                                    <div class="invalid-feedback">{{checkData.MailErrorMsg}}</div>
                                 </div>
                             </div>
                             <div class="w-100"></div>
@@ -131,7 +131,7 @@
                             <div class="w-100"></div>
                             <div class="form-group Save col-12 row justify-content-end" v-bind:class="{'d-none':inputstatus.button}">
                                 <div class="Edit">
-                                    <button class="btn btn-primary" id="ModifySave">
+                                    <button class="btn btn-primary" id="ModifySave" @click="sendNewProfile">
                                         Submit
                                     </button>
                                 </div>
@@ -248,8 +248,8 @@
                                            </span>
                                        </div>
                                        <div class="WishlistRemove my-auto col-3 d-flex">
-                                           <button class="border-0 btn"><i class="fa fa-trash fa-4x"></i> </button>
-                                           <button class="btn border-0"><i class="fa fa-shopping-cart fa-4x"></i></button>
+                                           <button class="border-0 btn"><i class="fa fa-trash fa-3x" @click="removeWish(item.wid)"></i> </button>
+                                           <button class="btn border-0"><i class="fa fa-shopping-cart fa-3x" @click="addcart(item.pid)"></i></button>
                                                
                                            
                                        </div>

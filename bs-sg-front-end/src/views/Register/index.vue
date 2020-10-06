@@ -188,13 +188,10 @@ export default {
           };
           console.log(json);
 
-          axios({
-            url: `${this.$store.state.domain}Member/RegisterMember`,
-            method: "post",
-            data: JSON.stringify(json),
-          }).then((response) => {
-            console.log(response);
-          });
+ axios.post(`${this.$store.state.domain}Member/RegisterMember`, json)
+        .then(res => {
+          console.log(res.data);
+        });
         } else {
           alert("Please complete the form.");
         }
