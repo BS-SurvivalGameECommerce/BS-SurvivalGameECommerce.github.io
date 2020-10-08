@@ -32,6 +32,11 @@
                             <router-link class="mr-2" to="/MemberCenter">
                                 {{this.$store.state.profile.mail}}
                             </router-link>
+                            <span @click="LogOut">
+                                <a href="">
+                                    Log Out
+                                </a>
+                            </span>
                         </p>
                         <p class="mb-0" v-else>
                             <router-link class="mr-2" to="/SignUp">
@@ -40,6 +45,7 @@
                             <router-link class="mr-2" to="/Login">
                                 Log In
                             </router-link>
+
                             <!-- <a href="#" class="mr-2">Sign Up</a> -->
                             <!-- <a href="#" class="Log_In">Log In</a> -->
                         </p>

@@ -28,6 +28,10 @@ Vue.prototype.InitAnime = function(){
 Vue.prototype.getToken = function(){
     return localStorage.getItem('LoginToken');
 }
+Vue.prototype.LogOut = function(){
+    return localStorage.removeItem('LoginToken');
+
+}
 
 Vue.use(BootstrapVue)
 // Vue.use(plugin)

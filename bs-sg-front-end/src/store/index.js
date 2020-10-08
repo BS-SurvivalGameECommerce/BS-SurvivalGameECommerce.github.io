@@ -42,6 +42,10 @@ export default new Vuex.Store({
         setProfile(state, profile) {
             state.profile.id = profile.id;
             state.profile.mail = profile.mail;
+        },
+        removeProfile(state){
+            state.profile.id = '';
+            state.profile.mail = '';
         }
     },
     actions: {

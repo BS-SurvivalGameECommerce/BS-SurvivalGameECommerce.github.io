@@ -84,6 +84,7 @@ export default {
                     console.log(res.data);
                     localStorage.setItem('LoginToken', res.data.data.token);
                     this.$store.commit('setProfile',res.data.data);
+                    this.$router.push({ path: `/` });
                 });
         }
     }    

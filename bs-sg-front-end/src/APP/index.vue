@@ -33,6 +33,12 @@ export default {
         behavior: 'smooth'
       });
     }
+  },
+  methods:{
+    LogOut(){
+      this.LogOut();
+          this.$stote.removeProfile();
+    }
   }
 };
 </script>
